@@ -6,6 +6,7 @@ std::string Decoder(std::string code, int key)
 	std::string result = "";
 	int new_number;
 	char new_letter;
+	
 
 	for (char c : code)
 	{
@@ -14,7 +15,7 @@ std::string Decoder(std::string code, int key)
 			new_number = int(c) + key;
 			if (new_number > 'z')
 			{
-				new_letter = char('a' + (new_number - 'z'));
+				new_letter = char('a' + (new_number - 'z'-1));
 			}
 			else if (new_number < 'a')
 			{
@@ -29,11 +30,11 @@ std::string Decoder(std::string code, int key)
 			new_number = int(c) + key;
 			if (new_number > 'Z')
 			{
-				new_letter = char('A' + (new_number - 'Z'));
+				new_letter = char('A' + (new_number - 'Z'-1));
 			}
 			else if (new_number < 'A')
 			{
-				new_letter = char('Z' - ('A' - new_number));
+				new_letter = char('Z' - ('A' - new_number-1));
 			}
 			else {
 				new_letter = char(new_number);
