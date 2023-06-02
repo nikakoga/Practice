@@ -1,0 +1,45 @@
+      Klasa Card (Karta):
+        Reprezentuje pojedynczą kartę w talii.
+        Karty mają różne rangi (as, król, dama, walet itd.) i kolory (trefl, karo, pik, kier).
+        Może mieć przeciążone operatory do porównywania kart, np. porównywanie rangi i koloru.
+
+    Klasa Deck (Talia):
+        Reprezentuje talie kart w grze.
+        Może być inicjalizowana pełnym zestawem kart.
+        Powinna mieć funkcje do tasowania tali, dobierania kart i wyświetlania aktualnego stanu tali.
+
+    Klasa Player (Gracz):
+        Reprezentuje gracza w grze.
+        Gracz może mieć nazwę oraz rękę (listę kart).
+        Może mieć funkcje do dodawania kart do ręki, porównywania wartości ręki z innymi graczami itp.
+
+    Klasa Dealer (Krupier):
+        Dziedziczy po klasie Player.
+        Reprezentuje krupiera w grze Poker.
+        Krupier jest odpowiedzialny za rozdawanie kart graczom, odkrywanie kart wspólnych na stole oraz zarządzanie rundami licytacji.
+        Może posiadać dodatkowe metody związane z mechaniką gry, takie jak przeliczanie układu kart, ogłaszanie zwycięzców itp.
+
+    Klasa Game (Gra):
+        Zarządza logiką gry.
+        Może mieć funkcje do rozpoczynania nowej gry, przeprowadzania rund licytacji, rozdawania kart, sprawdzania układów kart graczy, ogłaszania zwycięzców itp.
+        Wykorzystuje instancje klas Deck, Player i Dealer do zarządzania taliami, graczami i krupierem.
+
+    Klasy HumanPlayer (GraczCzłowiek) i ComputerPlayer (GraczKomputerowy):
+        Dziedziczą po klasie Player.
+        Przykłady wykorzystania polimorfizmu, gdzie każdy typ gracza może mieć inną strategię gry.
+
+    Przeciążanie operatorów:
+        Można przeciążyć operatory dla klas Card, Player i Deck.
+        Na przykład, operator porównania dla kart (aby można było porównywać ich wartości), operator strumieniowy (<<) dla klas Card i Player (aby można było wyświetlać informacje o kartach i graczu) itp.
+
+    Szablony (templates):
+        Można wykorzystać szablony do zaimplementowania ogólnych funkcji, takich jak tasowanie talii (aby działało dla dowolnego typu talii kart).
+
+    Dziedziczenie klas:
+        Klasa Dealer (Krupier) dziedziczy po klasie Player. Krupier jest specjalnym rodzajem gracza, który ma dodatkową logikę związaną z rozdawaniem kart i prowadzeniem gry. Wykorzystanie dziedziczenia pozwala na wykorzystanie ogólnych cech gracza (np. nazwa gracza) i dostosowanie ich do specjalnej roli krupiera.
+
+    Przykład różnych typów graczy:
+        Można stworzyć klasy potomne dziedziczące po klasie Player, takie jak HumanPlayer (GraczCzłowiek) i ComputerPlayer (GraczKomputerowy). Każdy z tych typów graczy może mieć różne strategie gry, a korzystając z polimorfizmu, można obsługiwać ich jako ogólny typ Player. Na przykład, można napisać funkcję, która przyjmuje wskaźnik lub referencję do Player, a następnie użyć polimorfizmu, aby wywołać odpowiednie metody dla danego typu gracza.
+
+    Przeciążanie operatorów:
+        Przeciążając operatory dla klas Card, Player i Deck, można wykorzystać polimorfizm. Na przykład, operator porównania dla kart może porównywać wartości rang kart, a dzięki polimorfizmowi będzie działał zarówno dla klas Card, jak i jej klas pochodnych (jeśli takie zostaną utworzone).

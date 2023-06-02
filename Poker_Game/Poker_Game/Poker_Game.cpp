@@ -7,6 +7,7 @@
 int main()
 {
     Deck deck;
+    deck.Draw_card();
 }
 
 

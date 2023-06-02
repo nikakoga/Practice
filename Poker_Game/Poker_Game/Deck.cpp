@@ -1,5 +1,6 @@
 #include "Deck.h"
 
+
 Deck::Deck()
 {
 			std::vector<std::string> card_colours = { "club","spade","heart","diamond" };
@@ -17,4 +18,11 @@ Deck::Deck()
 			Deck::cards[1] = deck;	
 }
 
-		
+Card Deck::Draw_card()
+{
+	pick = Card(available);
+	std::cout << "Stworzylam";
+	pick.ShowCard();
+	return pick;
+}
+
