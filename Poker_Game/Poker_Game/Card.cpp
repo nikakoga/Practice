@@ -1,6 +1,6 @@
 #include "Card.h"
 
-Card::Card(std::vector<std::string> available)
+Card::Card()
 {
     int random = std::rand() % (available.size() - 1);
     std::string card = available[random];

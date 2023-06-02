@@ -1,6 +1,5 @@
 #include "Deck.h"
 
-
 Deck::Deck()
 {
 			std::vector<std::string> card_colours = { "club","spade","heart","diamond" };
@@ -12,17 +11,31 @@ Deck::Deck()
 				for (std::string value : card_values)
 				{
 					deck.push_back(value +" " +colour);
-					std::cout << value +" "+ colour << std::endl;
+					//std::cout << value +" "+ colour << std::endl; // to show card
 				}
 			}
-			Deck::cards[1] = deck;	
+			
+			Deck::available = deck;
+			Deck::cards = deck;
 }
 
-Card Deck::Draw_card()
+void Deck::Show_available()
 {
-	pick = Card(available);
-	std::cout << "Stworzylam";
-	pick.ShowCard();
-	return pick;
+	for (auto card : available)
+	{
+		std::cout << card << std::endl;
+	}
 }
+
+void Deck::Update_deck(std::string card)
+{
+	auto pos = std::find(available.begin(), available.end(), card);
+	
+	if (pos != available.end())
+	{
+		available.erase(pos);
+	}
+}
+
+
 

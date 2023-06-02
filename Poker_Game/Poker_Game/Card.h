@@ -8,8 +8,8 @@ class Card : public Deck
     
 {
 public:
-    Card(std::vector<std::string> available);
-    
+
+    Card();
     void ShowCard();
 
 private:

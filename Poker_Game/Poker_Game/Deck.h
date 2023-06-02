@@ -1,20 +1,27 @@
 #pragma once
-#include <unordered_map>
+//#include <unordered_map>
 #include <vector>
 #include <string>
 #include <iostream>
+#include <algorithm>
 
 class Deck
 {
-protected:
-	std::unordered_map<int, std::vector<std::string>> cards;
-	std::vector<std::string> not_available = cards.at(0);
-	std::vector<std::string> available = cards.at(1);
 
 public:
 
 	Deck();
-	Card Draw_card();
+	void Show_available();
+
+
+protected:
+	//std::unordered_map<int, std::vector<std::string>> cards;
+	//std::vector<std::string> not_available = cards.at(0);
+	std::vector<std::string> available;
+	std::vector<std::string> cards;
+
+	void Update_deck(std::string card);
+
 	
 };
 
