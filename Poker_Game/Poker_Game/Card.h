@@ -9,7 +9,7 @@ class Card : public Deck
 {
 public:
 
-    Card();
+    Card(const Deck& deck);
     void ShowCard();
 
 private:

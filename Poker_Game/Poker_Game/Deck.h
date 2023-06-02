@@ -11,6 +11,7 @@ class Deck
 public:
 
 	Deck();
+
 	void Show_available();
 
 

@@ -11,7 +11,6 @@ Deck::Deck()
 				for (std::string value : card_values)
 				{
 					deck.push_back(value +" " +colour);
-					//std::cout << value +" "+ colour << std::endl; // to show card
 				}
 			}
 			
@@ -21,19 +20,21 @@ Deck::Deck()
 
 void Deck::Show_available()
 {
+	std::cout << "Dostepne karty" << std::endl;
 	for (auto card : available)
 	{
 		std::cout << card << std::endl;
 	}
+	std::cout << std::endl;
 }
 
 void Deck::Update_deck(std::string card)
 {
-	auto pos = std::find(available.begin(), available.end(), card);
+	 auto it = std::find(available.begin(), available.end(), card);
 	
-	if (pos != available.end())
+	if (it!= available.end())
 	{
-		available.erase(pos);
+		available.erase(it);
 	}
 }
 

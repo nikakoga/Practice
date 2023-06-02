@@ -5,8 +5,12 @@
 
 int main()
 {
+    srand(time(0));
+
     Deck deck;
-    Card card();
+    Card card(deck);
+    card.ShowCard();
+    deck.Show_available();
     
 }
 
