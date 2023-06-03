@@ -10,20 +10,23 @@ Deck::Deck()
 			{
 				for (std::string value : card_values)
 				{
-					deck.push_back(value +" " +colour);
+					deck.push_back(value +" " +colour); //creating string for vector of strings
+
+					Card new_card(value, colour); //creating objects for vector of objects
+					cards.push_back(new_card);
 				}
 			}
 
-			Deck::available = deck;
-			Deck::cards = deck;
+			Deck::all_existing_cards = deck;
+			
 }
 
 void Deck::Show_available()
 {
 	std::cout << "Dostepne karty" << std::endl;
-	for (auto card : available)
+	for (auto card : cards)
 	{
-		std::cout << card << std::endl;
+		std::cout << card.Get_value()<<card.Get_colour() << std::endl;
 	}
 	std::cout << std::endl;
 }
@@ -31,18 +34,28 @@ void Deck::Show_available()
 void Deck::Shuffle_deck()
 {
 	auto rng = std::default_random_engine{};
-	std::shuffle(std::begin(available), std::end(available), rng);
+	std::shuffle(std::begin(cards), std::end(cards), rng);
 }
 
-void Deck::Update_deck(std::string card)
+
+Card Deck::Get_card()
 {
-	 auto it = std::find(available.begin(), available.end(), card);
+	Card drawnCard = cards.back();
+	cards.pop_back();
+	return drawnCard;
 	
-	if (it!= available.end())
-	{
-		available.erase(it);
-	}
 }
+
+//void Deck::Update_deck(std::string card)
+//{
+//	 auto it = std::find(cards.begin(), cards.end(), card);
+//	
+//	if (it!= cards.end())
+//	{
+//		cards.erase(it);
+//	}
+//}
+
 
 
 

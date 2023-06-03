@@ -5,6 +5,8 @@
 #include <iostream>
 #include <algorithm>
 #include <random>
+#include "Card.h"
+
 
 class Deck
 {
@@ -15,21 +17,18 @@ public:
 
 	void Show_available();
 	void Shuffle_deck();
+	//void Update_deck(std::string card);
 
+	std::vector<std::string> all_existing_cards;
+	std::vector<Card> cards;
 
-protected:
-	//std::unordered_map<int, std::vector<std::string>> cards;
-	//std::vector<std::string> not_available = cards.at(0);
-	std::vector<std::string> available;
-	std::vector<std::string> cards;
-
-	void Update_deck(std::string card);
-	
-
+	Card Get_card();
 	
 };
 
-
+//std::unordered_map<int, std::vector<std::string>> cards;
+//std::vector<std::string> not_available = cards.at(0);
+// 
 //void operator - (std::string used)
 //{
 //	not_available = cards.at(0);
