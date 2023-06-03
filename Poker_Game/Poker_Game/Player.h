@@ -4,7 +4,7 @@
 #include "Card.h"
 #include "Deck.h"
 
-//ma_byc_wityualna_docelowo
+
 class Player
 {
 public:
@@ -21,5 +21,5 @@ protected:
 //	std::string name;
 //	std::vector<Card> hand;
 //	int credits;
-};
+
 
