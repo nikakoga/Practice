@@ -4,6 +4,7 @@
 #include <string>
 #include <iostream>
 #include <algorithm>
+#include <random>
 
 class Deck
 {
@@ -13,6 +14,7 @@ public:
 	Deck();
 
 	void Show_available();
+	void Shuffle_deck();
 
 
 protected:
@@ -22,6 +24,7 @@ protected:
 	std::vector<std::string> cards;
 
 	void Update_deck(std::string card);
+	
 
 	
 };

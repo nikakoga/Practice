@@ -4,13 +4,14 @@
 #include <cstdio>
 #include <ctime>
 
-class Card : public Deck
+class Card
     
 {
 public:
 
     Card(const Deck& deck);
     void ShowCard();
+    //Card Get_card();
 
 private:
     std::string colour;

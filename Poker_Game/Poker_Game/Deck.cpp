@@ -13,7 +13,7 @@ Deck::Deck()
 					deck.push_back(value +" " +colour);
 				}
 			}
-			
+
 			Deck::available = deck;
 			Deck::cards = deck;
 }
@@ -26,6 +26,12 @@ void Deck::Show_available()
 		std::cout << card << std::endl;
 	}
 	std::cout << std::endl;
+}
+
+void Deck::Shuffle_deck()
+{
+	auto rng = std::default_random_engine{};
+	std::shuffle(std::begin(available), std::end(available), rng);
 }
 
 void Deck::Update_deck(std::string card)
