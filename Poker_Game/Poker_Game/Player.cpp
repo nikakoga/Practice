@@ -1,6 +1,6 @@
 #include "Player.h"
 
-Player::Player(std::string ID)
+Player::Player(Deck& _deck)
 {
-	name = ID;
+	_deck = deck;
 }
