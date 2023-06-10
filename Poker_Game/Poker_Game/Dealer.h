@@ -10,18 +10,14 @@ class Dealer : public Player
 public:
 	Dealer(Deck& deck, HumanPlayer& _human, ComputerPlayer& _computer ); 
 
-	int currentPlayer=1;
+	int currentPlayer=0;
+	int whoStart = 1;
 
 	HumanPlayer& human;
 	ComputerPlayer& computer;
 	int creditsFromHuman;
 	int cresitsFromComputer;
 	
-
-	void PlayTurn() override
-	{
-		// Logika gry dla dealera o ile w ogole on ma uzywac tej funkcji, ale raczej nie
-	}
 
 	void TakeCard() override
 	{
@@ -30,15 +26,13 @@ public:
 		{
 			if (currentPlayer = 1)
 			{
-				std::cout << "Do you want to:" << "\n" << "1 - match the current bet" << "\n" << "or" << "\n" << "2 - fold your hand";
-				int respond = SafeRespond();
-				if (respond == 1)
+				if (human.ChooseToMatchOrFold())
 				{
-					//dobijanie do stawki
+					//pobieranie kasy
 				}
 				else
 				{
-					//passowanie
+					Pass();
 				}
 			}
 			else
@@ -63,10 +57,19 @@ public:
 
 	void Pass()
 	{
-		//wygrywa przeciwnik
+		if (currentPlayer == 1)
+		{
+			//kasa do kompa
+			
+		}
+		else
+		{
+			//kasa do czlowieka
+		}
+		
 	}
 
-	int SafeRespond();
+	
 
 };
 

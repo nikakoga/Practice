@@ -16,16 +16,11 @@ public:
 	Deck& deck;
 
 	//Take card.
-	virtual void TakeCard() = 0;
+	virtual void TakeCard();
+	virtual void PayUp() = 0;
 
+	virtual bool ChooseToMatchOrFold() = 0;
 
-	//Pass
-	void Pass()
-	{
-
-	}
-	
-	virtual void PlayTurn() = 0;
 	
 };
 
