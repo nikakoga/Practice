@@ -10,16 +10,25 @@ class Player
 public:
 	Player(Deck& _deck);
 
-	virtual void PlayTurn() = 0;
-
-protected:
+	int credits = 100;
+	std::string name;
+	std::vector<Card> hand;
 	Deck& deck;
+
+	//Take card.
+	virtual void TakeCard() = 0;
+
+
+	//Pass
+	void Pass()
+	{
+
+	}
+	
+	virtual void PlayTurn() = 0;
+	
 };
 
-	//std::string Take_card()
-//protected:
-//	std::string name;
-//	std::vector<Card> hand;
-//	int credits;
+	
 
 

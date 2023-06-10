@@ -6,20 +6,23 @@ class Dealer : public Player
 
 public:
 	Dealer(Deck& deck) : Player(deck) {}
+	Deck deck;
 
 	void PlayTurn() override
 	{
 		// Logika gry dla dealera
 	}
 
-	protected:
+	void TakeCard() override
+	{
+		//1. sprawdza czy oboje gracze wylozyli na stol tyle samo
+		//2. doklada karte
+		//3. wyswietla karte
+	}
 
-	void Take_card();
-	Deck deck;
-
-	std::string name;
-	std::vector<Card> hand;
-	int credits;
+	//name = "dealer";
+	//std::vector<Card> hand;
+	//credits;
 	
 };
 
