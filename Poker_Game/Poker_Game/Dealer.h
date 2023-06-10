@@ -8,10 +8,12 @@ class Dealer : public Player
 
 	//nie jestem pewna czy on powinien dziedziczyc z Playera bo w konstruktorze powinien dostac graczy
 public:
-	Dealer(Deck& deck) : Player(deck) {} //w konstruktorze powinno sie mu podawac chyba tez gracza komputerowego i human
-	Deck deck;
+	Dealer(Deck& deck, HumanPlayer& _human, ComputerPlayer& _computer ); 
 
 	int currentPlayer=1;
+	HumanPlayer& human;
+	ComputerPlayer& computer;
+	
 	
 
 	void PlayTurn() override
@@ -22,6 +24,14 @@ public:
 	void TakeCard() override
 	{
 		//0. sprawdza czyja kolej i komu ma dac karte
+		if (currentPlayer = 1)
+		{
+			human.TakeCard();
+		}
+		else
+		{
+			computer.TakeCard();
+		}
 		//1. sprawdza czy oboje gracze wylozyli na stol tyle samo
 		//2. doklada karte
 		//3. wyswietla karte
@@ -37,10 +47,5 @@ public:
 
 	}
 
-
-	//name = "dealer";
-	//std::vector<Card> hand;
-	//credits;
-	
 };
 
