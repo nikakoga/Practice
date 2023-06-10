@@ -8,12 +8,13 @@ Deck::Deck()
 
 void Deck::Show_available()
 {
-	std::cout << "Dostepne karty" << std::endl;
+	std::cout << "Dostepne karty" << "\n";
 	for (auto card : deck)
 	{
-		std::cout << card.Get_value()<<" "<<card.Get_colour() << std::endl;
+		std::cout << card.GetValue()<<" "<<card.GetColour() << "\n";
 	}
-	std::cout << std::endl;
+	std::cout << "\n"
+;
 }
 
 void Deck::ShuffleDeck()
@@ -32,14 +33,14 @@ void Deck::CreateDeck()
 	{
 		for (std::string value : card_values)
 		{
-			Card new_card(value, colour); //creating objects for vector of objects
+			Card new_card(value, colour); 
 			deck.push_back(new_card);
 		}
 	}
 }
 
 
-Card Deck::Get_card()
+Card Deck::GetCard()
 {
 	Card drawnCard = deck.back();
 	deck.pop_back();

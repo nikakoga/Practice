@@ -13,12 +13,12 @@ void Card::ShowCard()
 
 }
 
-std::string Card::Get_colour()
+std::string Card::GetColour()
 {
     return colour;
 }
 
-std::string Card::Get_value()
+std::string Card::GetValue()
 {
     return value;
 }

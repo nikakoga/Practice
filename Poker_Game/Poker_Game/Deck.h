@@ -23,7 +23,7 @@ public:
 	void CreateDeck();
 	
 
-	Card Get_card();
+	Card GetCard();
 
 };
 

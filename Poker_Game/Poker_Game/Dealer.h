@@ -11,6 +11,7 @@ public:
 	Dealer(Deck& deck, HumanPlayer& _human, ComputerPlayer& _computer ); 
 
 	int currentPlayer=1;
+
 	HumanPlayer& human;
 	ComputerPlayer& computer;
 	int creditsFromHuman;
@@ -30,7 +31,15 @@ public:
 			if (currentPlayer = 1)
 			{
 				std::cout << "Do you want to:" << "\n" << "1 - match the current bet" << "\n" << "or" << "\n" << "2 - fold your hand";
-				SafeRespond();
+				int respond = SafeRespond();
+				if (respond == 1)
+				{
+					//dobijanie do stawki
+				}
+				else
+				{
+					//passowanie
+				}
 			}
 			else
 			{
@@ -54,29 +63,10 @@ public:
 
 	void Pass()
 	{
-
+		//wygrywa przeciwnik
 	}
 
-	int SafeRespond()
-	{
-		int answear=0;
-		
-		int answer;
-		while (true) {
-			std::cin >> answer;
-			if (!std::cin || (answer != 1 && answer != 2)) {
-				std::cout << "Wrong choice. Enter again: " << "\n";
-				std::cin.clear();
-				std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-				continue;
-			}
-			else {
-				break;
-			}
-		}
-
-		return answear;
-	}
+	int SafeRespond();
 
 };
 
