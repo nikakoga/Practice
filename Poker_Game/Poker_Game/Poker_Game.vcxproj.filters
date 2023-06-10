@@ -56,5 +56,8 @@
     <ClInclude Include="Dealer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="CardValue.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

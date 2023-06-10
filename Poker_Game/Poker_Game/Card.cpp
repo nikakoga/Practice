@@ -8,7 +8,8 @@ Card::Card(std::string c_value, std::string c_colour)
 
 void Card::ShowCard()
 {
-    std::cout<< value << colour << std::endl<<std::endl;
+    
+    std::cout<< value <<" "<< colour << std::endl << std::endl;
 }
 
 std::string Card::Get_colour()
@@ -21,3 +22,4 @@ std::string Card::Get_value()
     return value;
 }
 
+//CardValue c = A;

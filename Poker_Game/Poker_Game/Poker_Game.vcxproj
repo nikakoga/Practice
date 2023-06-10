@@ -140,6 +140,7 @@
     <ClInclude Include="ComputerPlayer.h" />
     <ClInclude Include="Dealer.h" />
     <ClInclude Include="Deck.h" />
+    <ClInclude Include="CardValue.h" />
     <ClInclude Include="HumanPlayer.h" />
     <ClInclude Include="Player.h" />
   </ItemGroup>

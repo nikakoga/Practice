@@ -11,18 +11,19 @@
 #include "Card.h"
 
 
+
 class Deck
 {
 public:
 	Deck();
+	std::vector<Card> deck;
 
 	void Show_available();
-	void Shuffle_deck();
-	//void Update_deck(std::string card);
-
-	std::vector<std::string> all_existing_cards;
-	std::vector<Card> cards;
+	void ShuffleDeck();
+	void CreateDeck();
+	
 
 	Card Get_card();
+
 };
 

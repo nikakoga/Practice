@@ -9,7 +9,9 @@ int main()
 
     Deck deck;
     deck.Show_available();
-    deck.Shuffle_deck();
+   // deck.ShuffleDeck();
+    Card random = deck.Get_card();
+    random.ShowCard();
     deck.Show_available();
     
     
