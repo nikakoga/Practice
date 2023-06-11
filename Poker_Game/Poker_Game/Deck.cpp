@@ -19,7 +19,8 @@ void Deck::Show_available()
 
 void Deck::ShuffleDeck()
 {
-	auto rng = std::default_random_engine{};
+	std::random_device rd;
+	std::mt19937 rng(rd()); // jakis bardziej zaawansowany generator liczb losowych niz std::default_random_engine, nie trzeba robic srand
 	std::shuffle(std::begin(deck), std::end(deck), rng);
 }
 

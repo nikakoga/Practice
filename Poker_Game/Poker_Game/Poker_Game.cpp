@@ -5,11 +5,10 @@
 
 int main()
 {
-    srand(time(0));
+   // srand(time(0));
 
     Deck deck;
     deck.Show_available();
-   // deck.ShuffleDeck();
     Card random = deck.GetCard();
     random.ShowCard();
     deck.Show_available();
