@@ -1,12 +1,12 @@
 #include "HumanPlayer.h"
 
-bool HumanPlayer::IsMatched()
+bool HumanPlayer::ChooseToMatchOrFold(int amount)
 {
 	std::cout << "Do you want to:" << "\n" << "1 - match the current bet" << "\n" << "or" << "\n" << "2 - fold your hand";
 	int respond = SafeRespond();
 	if (respond == 1)
 	{
-		//dobijanie do stawki
+		PayUp(amount);
 		return true;
 	}
 	else

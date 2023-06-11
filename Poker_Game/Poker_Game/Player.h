@@ -17,9 +17,8 @@ public:
 
 	//Take card.
 	virtual void TakeCard();
-	virtual void PayUp() = 0;
-
-	virtual bool ChooseToMatchOrFold() = 0;
+	virtual void PayUp(int amount);
+	virtual bool ChooseToMatchOrFold(int amount) = 0;
 
 	
 };

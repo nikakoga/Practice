@@ -24,9 +24,10 @@ public:
 		//0. sprawdza czy oboje gracze wylozyli na stol tyle samo
 		while (!CreditCheck())
 		{
+			int toPay = HowManyNotEven();
 			if (currentPlayer = 1)
 			{
-				if (human.ChooseToMatchOrFold())
+				if (human.ChooseToMatchOrFold(toPay))
 				{
 					//pobieranie kasy
 				}
@@ -54,6 +55,20 @@ public:
 	}
 
 	bool CreditCheck();
+
+	int HowManyNotEven()
+	{
+		int notEven = 0;
+		if (creditsFromHuman > cresitsFromComputer)
+		{
+			notEven = creditsFromHuman - cresitsFromComputer;
+		}
+		else
+		{
+			notEven = cresitsFromComputer - creditsFromHuman;
+		}
+		return notEven;
+	}
 
 	void Pass()
 	{

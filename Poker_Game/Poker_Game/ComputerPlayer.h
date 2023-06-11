@@ -11,13 +11,15 @@ class ComputerPlayer :
 
         void PayUp(int amount) override;
 
-        bool ChooseToMatchOrFold() override
+        bool ChooseToMatchOrFold(int amount) override
         {
             //funkcja decyduj¹ca czy dolozyc czy spasowac
         }
 
         
         //funkcja decydujaca czy podbic (jesli podbicie to wypisanie na ekran)
+
+        
        
 };
 
