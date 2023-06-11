@@ -26,7 +26,7 @@ void Deck::ShuffleDeck()
 void Deck::CreateDeck()
 {
 	std::vector<std::string> card_colours = { "club","spade","heart","diamond" };
-	std::vector<std::string> card_values = { "1","2","3","4","5","6","7","8","9","10","J","Q","K","A" };
+	std::vector<std::string> card_values = { "2","3","4","5","6","7","8","9","10","J","Q","K","A" };
 	
 
 	for (std::string colour : card_colours)

@@ -4,7 +4,7 @@ class HumanPlayer :
     public Player
 {
 public:
-    HumanPlayer(Deck& deck) : Player(deck) {}
+    HumanPlayer(Deck& deck);
 
     bool ChooseToMatchOrFold(int amount) override;
     

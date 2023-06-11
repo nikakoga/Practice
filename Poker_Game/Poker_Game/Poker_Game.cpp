@@ -1,7 +1,7 @@
 // Poker_Game.cpp : This file contains the 'main' function. Program execution begins and ends there.
 //
 #include <iostream>
-#include "Deck.h"
+#include "Dealer.h"
 
 int main()
 {
@@ -10,9 +10,11 @@ int main()
     Deck deck;
     deck.Show_available();
    // deck.ShuffleDeck();
-    Card random = deck.Get_card();
+    Card random = deck.GetCard();
     random.ShowCard();
     deck.Show_available();
+    HumanPlayer human(deck);
+    ComputerPlayer comp(deck);
     
     
 }

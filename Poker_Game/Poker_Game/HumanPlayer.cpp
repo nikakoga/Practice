@@ -1,5 +1,13 @@
 #include "HumanPlayer.h"
 
+HumanPlayer::HumanPlayer(Deck& deck) : Player(deck)
+{
+	std::string player;
+	std::cout << "Enter player name"<<"\n";
+	std::cin >> player;
+	name = player;
+}
+
 bool HumanPlayer::ChooseToMatchOrFold(int amount)
 {
 	std::cout << "Do you want to:" << "\n" << "1 - match the current bet" << "\n" << "or" << "\n" << "2 - fold your hand";

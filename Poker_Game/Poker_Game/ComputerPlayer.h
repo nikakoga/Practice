@@ -5,7 +5,7 @@ class ComputerPlayer :
 {
     
     public:
-        ComputerPlayer(Deck & deck) : Player(deck) {}
+        ComputerPlayer(Deck& deck);
 
         int creditsSpend = 0; //powinno sie przydac do strategi gry, ale jak nie to usun z PayUp tez
 
@@ -14,6 +14,7 @@ class ComputerPlayer :
         bool ChooseToMatchOrFold(int amount) override
         {
             //funkcja decyduj¹ca czy dolozyc czy spasowac
+            return false;
         }
 
         
