@@ -13,7 +13,7 @@ void Dealer::TakeCard()
 	while (!CreditCheck())
 	{
 		int toPay = HowManyNotEven();
-		if (currentPlayer = 1)
+		if (currentPlayer = Human) //!!!!!!! tu powinno byc ==
 		{
 			if (human.ChooseToMatchOrFold(toPay))
 			{
@@ -52,7 +52,7 @@ void Dealer::SetWinner()
 
 bool Dealer::CreditCheck()
 {
-	if (creditsFromHuman == cresitsFromComputer)
+	if (creditsFromHuman == creditsFromComputer)
 	{
 		return true;
 	}
@@ -62,13 +62,13 @@ bool Dealer::CreditCheck()
 int Dealer::HowManyNotEven()
 {
 	int notEven = 0;
-	if (creditsFromHuman > cresitsFromComputer)
+	if (creditsFromHuman > creditsFromComputer)
 	{
-		notEven = creditsFromHuman - cresitsFromComputer;
+		notEven = creditsFromHuman - creditsFromComputer;
 	}
 	else
 	{
-		notEven = cresitsFromComputer - creditsFromHuman;
+		notEven = creditsFromComputer - creditsFromHuman;
 	}
 	return notEven;
 }
@@ -78,11 +78,13 @@ void Dealer::Pass()
 	if (currentPlayer == 1)
 	{
 		//kasa do kompa
+		computer.credits += credits;
 
 	}
 	else
 	{
 		//kasa do czlowieka
+		human.credits += credits;
 	}
 }
 

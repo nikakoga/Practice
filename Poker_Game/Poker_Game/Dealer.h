@@ -10,13 +10,17 @@ class Dealer : public Player
 public:
 	Dealer(Deck& deck, HumanPlayer& _human, ComputerPlayer& _computer ); 
 
-	int currentPlayer=0;
-	int whoStart = 1;
+	enum PlayerType {
+		Human,
+		Computer
+	};
+	PlayerType currentPlayer = Human;
+	PlayerType whoStarte = Human;
 
 	HumanPlayer& human;
 	ComputerPlayer& computer;
-	int creditsFromHuman;
-	int cresitsFromComputer;
+	int creditsFromHuman=0;
+	int creditsFromComputer=0;
 	
 
 	void TakeCard() override;

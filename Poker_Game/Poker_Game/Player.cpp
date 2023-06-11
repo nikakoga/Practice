@@ -20,3 +20,8 @@ void Player::PayUp(int amount)
 	}
 	
 }
+
+bool Player::ChooseToMatchOrFold(int amount)
+{
+	return false;
+}
