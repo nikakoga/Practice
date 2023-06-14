@@ -23,7 +23,7 @@ public:
 	int creditsFromComputer=0;
 	
 
-	void TakeCard() override;
+	void TakeCard() override; //mozna by sprobowac z klasy bazowej uzyc take card dla pierwszych 3 kart a potem wywolywac take card z tej klasy
 
 	void ShowTable();
 
