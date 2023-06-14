@@ -18,7 +18,7 @@ public:
 	//Take card.
 	virtual void TakeCard();
 	virtual void PayUp(int amount);
-	virtual bool ChooseToMatchOrFold(int amount) = 0; //pure virtual, teraz klasa player jest abstrakcyjna i nie da sie stworzyc jej obiektu
+	virtual bool ChooseToMatchOrFold(int amount); 
 
 	
 };
