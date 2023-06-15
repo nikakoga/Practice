@@ -10,7 +10,7 @@ class ComputerPlayer :
         int credits = 1000;
         int creditsSpend = 0; //powinno sie przydac do strategi gry, ale jak nie to usun z PayUp tez
 
-        void PayUp(int amount) override;
+        void PayUp(int amount);
 
         bool ChooseToMatchOrFold(int amount) override
         {

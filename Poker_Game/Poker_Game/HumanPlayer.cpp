@@ -78,7 +78,7 @@ void HumanPlayer::PayUp(int amount, std::string context)
 		}
 		else if (context == "raise")
 		{
-			 std::cout<< "Please enter again or input 0 if you dont want to raise" << "\n";
+			 std::cout<< "Please try again or enter 0 if you dont want to raise" << "\n";
 			 Raise();
 		}
 		

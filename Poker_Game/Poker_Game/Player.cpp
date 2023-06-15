@@ -8,18 +8,6 @@ void Player::TakeCard()
 
 }
 
-void Player::PayUp(int amount)
-{
-	if (credits >= amount)
-	{
-		credits -= amount;
-	}
-	else
-	{
-		//przegrana
-	}
-	
-}
 
 bool Player::ChooseToMatchOrFold(int amount)
 {
