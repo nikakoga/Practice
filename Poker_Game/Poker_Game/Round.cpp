@@ -3,7 +3,7 @@
 Round::Round(Dealer& _dealer, HumanPlayer& _human, ComputerPlayer& _computer) 
 	: dealer(_dealer), human(_human), computer(_computer)
 {
-	while (!dealer.roundFinished)
+	while (!human.lost||!computer.lost) //dopoki komputer lub czlowiek nie przegra
 	{
 		PayStartFee();
 		dealer.SetTable();
