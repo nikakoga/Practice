@@ -15,21 +15,18 @@ public:
 	HumanPlayer& human;
 	ComputerPlayer& computer;
 
-	int creditsFromHuman=0;
-	int creditsFromComputer=0;
+	bool roundFinished = false;
 	
-
-	void GiveCard(); 
-
 	void SetTable();
-
 	void ShowTable();
 
-	void SetWinner();
-
-	bool CreditCheck();
-
+	void CheckAmount();
 	int HowManyNotEven();
+
+	void GiveCard(); 
+	void NextPlayer();
+
+	void SetWinner();
 
 	void Pass();
 

@@ -7,9 +7,9 @@ Dealer::Dealer(Deck& _deck, HumanPlayer& _human, ComputerPlayer& _computer)
 	credits = 0;
 }
 
-void Dealer::GiveCard()
+void Dealer::CheckAmount()
 {
-	//0. sprawdza czy oboje gracze wylozyli na stol tyle samo
+	//0. sprawdza czy aktualny gracz wylozyl odpowiednio duzo
 	while (currentPlayer->creditsSpent < otherPlayer->creditsSpent)
 	{
 		int toPay = HowManyNotEven();
@@ -26,17 +26,34 @@ void Dealer::GiveCard()
 			Pass();
 			break;
 		}
-		
+
 	}
+}
+
+void Dealer::GiveCard()
+{
+	
+	CheckAmount();
+	
 	//1. doklada karte
 	TakeCard();
 	//2. wyswietla stol
 	ShowTable();
+
+	if (hand.size() == 5)
+	{
+		SetWinner();
+	}
 }
 
-//TO POWINNO BYC W KLASIE TURY
-//computer.PayUp(startPay);
-//human.PayUp(startPay);
+void Dealer::NextPlayer()
+{
+	Player* temp = currentPlayer;
+	currentPlayer = otherPlayer;
+	otherPlayer = temp;
+
+}
+
 
 void Dealer::SetTable()
 {
@@ -60,16 +77,9 @@ void Dealer::SetWinner()
 {
 	//porownuje ktora reka jest silniejsza
 	//potrzeba stworzyc kombinacje z wszystkich kart
+	roundFinished = true;
 }
 
-bool Dealer::CreditCheck()
-{
-	if (creditsFromHuman == creditsFromComputer)
-	{
-		return true;
-	}
-	return false;
-}
 
 int Dealer::HowManyNotEven()
 {
@@ -91,6 +101,8 @@ void Dealer::Pass()
 		//kasa do kompa
 		computer.credits += credits;
 	}
+
+	roundFinished = true;
 }
 
 
