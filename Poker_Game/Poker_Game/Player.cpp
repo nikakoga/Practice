@@ -5,7 +5,6 @@ Player::Player(Deck& _deck) : deck(_deck) {}
 void Player::TakeCard()
 {
 	hand.push_back(deck.GetCard());
-
 }
 
 void Player::PayUp(int amount, std::string context)
@@ -14,7 +13,6 @@ void Player::PayUp(int amount, std::string context)
 
 void Player::Raise()
 {
-	
 }
 
 
@@ -23,7 +21,7 @@ bool Player::ChooseToMatchOrFold(int amount)
 	return false;
 }
 
-bool Player::ChooseRaise(int amount)
+bool Player::ChooseRaise()
 {
 	return false;
 }

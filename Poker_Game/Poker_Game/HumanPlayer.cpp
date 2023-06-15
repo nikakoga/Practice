@@ -6,6 +6,7 @@ HumanPlayer::HumanPlayer(Deck& deck) : Player(deck)
 	std::cout << "Enter player name"<<"\n";
 	std::cin >> player;
 	name = player;
+	creditsSpent = 0;
 }
 
 bool HumanPlayer::ChooseToMatchOrFold(int amount)
@@ -24,7 +25,7 @@ bool HumanPlayer::ChooseToMatchOrFold(int amount)
 	}
 }
 
-bool HumanPlayer::ChooseRaise(int amount)
+bool HumanPlayer::ChooseRaise()
 {
 	std::cout << "Do you want to Raise? :" << "\n" << "1 - No" <<"\n" << "2 - Yes";
 	int respond = SafeChooseBetweenTwo();
@@ -66,6 +67,7 @@ void HumanPlayer::PayUp(int amount, std::string context)
 	if (credits >= amount)
 	{
 		credits -= amount;
+		creditsSpent += amount;
 		std::cout << "Your credits left: " << credits << "\n\n";
 	}
 	else
@@ -75,6 +77,7 @@ void HumanPlayer::PayUp(int amount, std::string context)
 		if (context == "match" || context =="start")
 		{
 			//przegrana
+			lost = true;
 		}
 		else if (context == "raise")
 		{

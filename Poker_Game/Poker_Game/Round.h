@@ -10,7 +10,6 @@ public:
 
 
 	int startPay = 10;
-	bool finished = false;
 	
 	Dealer & dealer;
 	HumanPlayer& human;

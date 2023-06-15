@@ -12,7 +12,7 @@ public:
 
     bool ChooseToMatchOrFold(int amount) override;
 
-    bool ChooseRaise(int amount) override;
+    bool ChooseRaise() override;
 
     void Raise() override;
     

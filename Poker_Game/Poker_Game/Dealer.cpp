@@ -9,31 +9,43 @@ Dealer::Dealer(Deck& _deck, HumanPlayer& _human, ComputerPlayer& _computer)
 
 void Dealer::CheckAmount()
 {
-	//0. sprawdza czy aktualny gracz wylozyl odpowiednio duzo
+	bool pass = false;
+
+	//sprawdza czy aktualny gracz wylozyl odpowiednio duzo
 	while (currentPlayer->creditsSpent < otherPlayer->creditsSpent)
 	{
 		int toPay = HowManyNotEven();
+		//jesli nie to wybiera czy doplacic
 		if (currentPlayer->ChooseToMatchOrFold(toPay))
 		{
-			currentPlayer->PayUp(toPay, "match");
-			if (currentPlayer->ChooseRaise())
-			{
-				currentPlayer->Raise();
-			}
+			currentPlayer->PayUp(toPay, "match");			
 		}
+		//czy spasowac
 		else
 		{
+			pass = true;
 			Pass();
 			break;
 		}
 
 	}
+	//jesli nie spasowal moze przebic
+	if (!pass)
+	{
+		if (currentPlayer->ChooseRaise())
+		{
+			currentPlayer->Raise();
+		}
+	}
+	
 }
 
 void Dealer::GiveCard()
 {
-	
-	CheckAmount();
+	//gdzie indziej
+	/*CheckAmount();
+	NextPlayer();
+	CheckAmount();*/
 	
 	//1. doklada karte
 	TakeCard();

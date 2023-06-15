@@ -10,8 +10,10 @@ public:
 	Player(Deck& _deck);
 
 	int credits = 1000;
+    int creditsSpent = 0;
 	std::string name;
 	std::vector<Card> hand;
+    bool lost = false;
 	//std::unordered_set<Card> bestCombination; //NAPRAW BO WYKRZACZA
 	Deck& deck;
 
@@ -20,7 +22,7 @@ public:
     virtual void PayUp(int amount, std::string context);
     virtual void Raise();
 	virtual bool ChooseToMatchOrFold(int amount); 
-    virtual bool ChooseRaise(int amount);
+    virtual bool ChooseRaise();
 
 
     void GenerateCombinations(int howManyToPick);
