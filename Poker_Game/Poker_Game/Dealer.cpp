@@ -7,7 +7,7 @@ Dealer::Dealer(Deck& _deck, HumanPlayer& _human, ComputerPlayer& _computer)
 	credits = 0;
 }
 
-void Dealer::CheckAmount()
+void Dealer::CheckMatch()
 {
 	//sprawdza czy aktualny gracz wylozyl odpowiednio duzo
 	while (currentPlayer->creditsOnTable < otherPlayer->creditsOnTable)
@@ -27,13 +27,17 @@ void Dealer::CheckAmount()
 	}
 }
 
+void Dealer::CheckRaise()
+{
+	if (currentPlayer->ChooseRaise())
+	{
+		currentPlayer->Raise();
+	}
+}
+
+
 void Dealer::GiveCard()
 {
-	//gdzie indziej
-	/*CheckAmount();
-	NextPlayer();
-	CheckAmount();*/
-	
 	//1. doklada karte
 	TakeCard();
 	//2. wyswietla stol
@@ -41,17 +45,10 @@ void Dealer::GiveCard()
 
 	if (hand.size() == 5)
 	{
-		SetWinner();
+		SetWinner(); //!!!!!!! to tu raczej nie powinno byc
 	}
 }
 
-void Dealer::Turn()
-{
-	if (currentPlayer->ChooseRaise())
-	{
-		currentPlayer->Raise();
-	}
-}
 
 void Dealer::NextPlayer()
 {
@@ -118,6 +115,7 @@ void Dealer::Clean()
 	CleanAfterRound();
 	human.CleanAfterRound();
 	computer.CleanAfterRound();
+	deck.NewRound();
 }
 
 

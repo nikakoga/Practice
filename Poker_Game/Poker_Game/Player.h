@@ -10,7 +10,7 @@ public:
 	Player(Deck& _deck);
 
 	int credits = 1000;
-    int creditsSpent = 0;
+    int creditsOnTable = 0;
 	std::string name;
 	std::vector<Card> hand;
     bool lost = false;
@@ -24,7 +24,7 @@ public:
 	virtual bool ChooseToMatchOrFold(int amount); 
     virtual bool ChooseRaise();
 
-
+    void CleanAfterRound();
     void GenerateCombinations(int howManyToPick);
 	int FindBestCombination();
 

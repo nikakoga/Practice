@@ -48,6 +48,11 @@ Card Deck::GetCard()
 	return drawnCard;
 }
 
+void Deck::ClearDeck()
+{
+	deck.clear();
+}
+
 
 
 

@@ -26,10 +26,10 @@ bool Player::ChooseRaise()
 	return false;
 }
 
-void Player::PreparedForNextRound()
+void Player::CleanAfterRound()
 {
 	lost = false;
-	creditsSpent = 0;
+	creditsOnTable = 0;
 	hand.clear();
 }
 

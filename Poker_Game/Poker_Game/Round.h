@@ -7,8 +7,6 @@ class Round
 public:
 	Round(Dealer& _dealer, HumanPlayer& _human, ComputerPlayer& _computer);
 
-
-
 	int startPay = 10;
 	
 	Dealer & dealer;
@@ -16,6 +14,6 @@ public:
 	ComputerPlayer& computer;
 	
 	void PayStartFee();
-	void Play();
+	void Turn();
 };
 

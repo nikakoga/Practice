@@ -6,7 +6,7 @@ HumanPlayer::HumanPlayer(Deck& deck) : Player(deck)
 	std::cout << "Enter player name"<<"\n";
 	std::cin >> player;
 	name = player;
-	creditsSpent = 0;
+	creditsOnTable = 0;
 }
 
 bool HumanPlayer::ChooseToMatchOrFold(int amount)
@@ -67,7 +67,7 @@ void HumanPlayer::PayUp(int amount, std::string context)
 	if (credits >= amount)
 	{
 		credits -= amount;
-		creditsSpent += amount;
+		creditsOnTable += amount;
 		std::cout << "Your credits left: " << credits << "\n\n";
 	}
 	else

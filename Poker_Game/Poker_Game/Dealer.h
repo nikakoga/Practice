@@ -15,25 +15,25 @@ public:
 	HumanPlayer& human;
 	ComputerPlayer& computer;
 
-	
+	int creditsOnTable = 0;
 	
 	void SetTable();
 	void ShowTable();
 
-	void CheckAmount();
+	void CheckMatch();
+	void CheckRaise();
 	int HowManyNotEven();
 	void PayToWinner(Player * winner);
 
 	void GiveCard(); 
 
-	void Turn();
 	void NextPlayer();
 
 	void SetWinner();
 
 	void Pass();
 
-	
+	void Clean();
 
 };
 

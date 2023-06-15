@@ -3,7 +3,7 @@
 ComputerPlayer::ComputerPlayer(Deck& deck) : Player(deck)
 {
 	name = "computer";
-	creditsSpent = 0;
+	creditsOnTable = 0;
 }
 
 void ComputerPlayer::PayUp(int amount, std::string context)
@@ -11,7 +11,7 @@ void ComputerPlayer::PayUp(int amount, std::string context)
 	if (credits >= amount)
 	{
 		credits -= amount;
-		creditsSpent += amount;  //moze potem do usuniecia aby chociaz jedna funkcja dzialala calkowicie z bazowej klasy
+		creditsOnTable += amount;  //moze potem do usuniecia aby chociaz jedna funkcja dzialala calkowicie z bazowej klasy
 	}
 	else
 	{
