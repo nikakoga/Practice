@@ -16,7 +16,8 @@ int main()
     HumanPlayer human(deck);
     ComputerPlayer comp(deck);
     Dealer dealer(deck, human, comp);
-    
+
+    dealer.SetTable();
     //To do polimorfizm, ale na razie go solidnie wykrzacza
 }
 

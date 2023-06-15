@@ -30,6 +30,19 @@ void HumanPlayer::TakeCard()
 	ShowHand();
 }
 
+void HumanPlayer::PayUp(int amount)
+{
+	if (credits >= amount)
+	{
+		credits -= amount;
+		std::cout << "Your credits left: " << credits << "\n\n";
+	}
+	else
+	{
+		//przegrana
+	}
+}
+
 void HumanPlayer::ShowHand()
 {
 	std::cout << "Your hand contains:" << "\n";

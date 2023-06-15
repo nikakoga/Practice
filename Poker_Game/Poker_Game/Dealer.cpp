@@ -7,7 +7,7 @@ Dealer::Dealer(Deck& _deck, HumanPlayer& _human, ComputerPlayer& _computer)
 	credits = 0;
 }
 
-void Dealer::TakeCard()
+void Dealer::GiveCard()
 {
 	//0. sprawdza czy oboje gracze wylozyli na stol tyle samo
 	while (!CreditCheck())
@@ -23,16 +23,40 @@ void Dealer::TakeCard()
 			else
 			{
 				Pass();
+				break;
 			}
 		}
 		else
 		{
 			//funkcja decydujaca czy dolozyc czy spasowac u komputera
+			if (computer.ChooseToMatchOrFold(toPay))
+			{
+				//pobieranie kasy
+				computer.PayUp(toPay);
+			}
+			else
+			{
+				Pass();
+				break;
+			}
+			
 		}
 	}
 	//1. doklada karte
-	hand.push_back(deck.GetCard());
+	TakeCard();
 	//2. wyswietla stol
+	ShowTable();
+}
+
+//TO POWINNO BYC W KLASIE TURY
+//computer.PayUp(startPay);
+//human.PayUp(startPay);
+
+void Dealer::SetTable()
+{
+	TakeCard();
+	TakeCard();
+	TakeCard();
 	ShowTable();
 }
 
@@ -77,7 +101,7 @@ int Dealer::HowManyNotEven()
 
 void Dealer::Pass()
 {
-	if (currentPlayer == 1)
+	if (currentPlayer == Human)
 	{
 		//kasa do kompa
 		computer.credits += credits;

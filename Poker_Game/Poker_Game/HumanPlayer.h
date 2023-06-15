@@ -10,6 +10,8 @@ public:
     
     void TakeCard() override;
 
+    void PayUp(int amount) override;
+
     void ShowHand();
 
     int SafeRespond();

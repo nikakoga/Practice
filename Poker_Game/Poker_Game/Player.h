@@ -9,10 +9,10 @@ class Player
 public:
 	Player(Deck& _deck);
 
-	int credits = 100;
+	int credits = 1000;
 	std::string name;
 	std::vector<Card> hand;
-	std::unordered_set<Card> bestCombination;
+	//std::unordered_set<Card> bestCombination; //NAPRAW BO WYKRZACZA
 	Deck& deck;
 
 	//Take card.
@@ -23,24 +23,7 @@ public:
 	int FindBestCombination();
 
 private:
-    void generateCombinationsUtil(std::vector<bool>& combinationMask, int index, int howManyToPick) {
-        if (howManyToPick == 0) {
-            RateCombination(combinationMask);
-            return;
-        }
-
-        if (index >= hand.size()) {
-            return;
-        }
-
-        // Wybierz aktualn¹ kartê do kombinacji
-        combinationMask[index] = true;
-        generateCombinationsUtil(combinationMask, index + 1, howManyToPick - 1);
-
-        // Nie wybieraj aktualnej karty do kombinacji
-        combinationMask[index] = false;
-        generateCombinationsUtil(combinationMask, index + 1, howManyToPick);
-    }
+    void generateCombinationsUtil(std::vector<bool>& combinationMask, int index, int howManyToPick);
 
     void RateCombination(const std::vector<bool>& combinationMask) {
         std::vector<Card> combination;
