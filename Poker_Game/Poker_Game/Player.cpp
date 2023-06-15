@@ -26,6 +26,13 @@ bool Player::ChooseRaise()
 	return false;
 }
 
+void Player::PreparedForNextRound()
+{
+	lost = false;
+	creditsSpent = 0;
+	hand.clear();
+}
+
 void Player::GenerateCombinations(int howManyToPick)
 {
 	std::vector<bool> combinationMask(hand.size(), false);

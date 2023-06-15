@@ -3,7 +3,6 @@
 Deck::Deck()
 {
 	CreateDeck();
-	ShuffleDeck();
 }
 
 void Deck::Show_available()
@@ -38,6 +37,7 @@ void Deck::CreateDeck()
 			deck.push_back(new_card);
 		}
 	}
+	ShuffleDeck();
 }
 
 
