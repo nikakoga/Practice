@@ -13,34 +13,20 @@ void Dealer::GiveCard()
 	while (!CreditCheck())
 	{
 		int toPay = HowManyNotEven();
-		if (currentPlayer == Human) 
+		if (currentPlayer->ChooseToMatchOrFold(toPay))
 		{
-			if (human.ChooseToMatchOrFold(toPay))
+			currentPlayer->PayUp(toPay, "match");
+			if (currentPlayer->ChooseRaise())
 			{
-				//pobieranie kasy
-				human.PayUp(toPay,"match");
-			}
-			else
-			{
-				Pass();
-				break;
+				currentPlayer->Raise();
 			}
 		}
 		else
 		{
-			//funkcja decydujaca czy dolozyc czy spasowac u komputera
-			if (computer.ChooseToMatchOrFold(toPay))
-			{
-				//pobieranie kasy
-				computer.PayUp(toPay, "match");
-			}
-			else
-			{
-				Pass();
-				break;
-			}
-			
+			Pass();
+			break;
 		}
+		
 	}
 	//1. doklada karte
 	TakeCard();
@@ -101,16 +87,16 @@ int Dealer::HowManyNotEven()
 
 void Dealer::Pass()
 {
-	if (currentPlayer == Human)
-	{
-		//kasa do kompa
-		computer.credits += credits;
-
-	}
-	else
+	if (currentPlayer==&computer) //jesli wskaznik ma ten sam adres to wskazuja na to samo
 	{
 		//kasa do czlowieka
 		human.credits += credits;
+
+	}
+	else if(currentPlayer==&human)
+	{
+		//kasa do kompa
+		computer.credits += credits;
 	}
 }
 

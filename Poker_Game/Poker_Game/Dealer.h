@@ -10,14 +10,7 @@ class Dealer : public Player
 public:
 	Dealer(Deck& deck, HumanPlayer& _human, ComputerPlayer& _computer ); 
 
-	enum PlayerType {
-		Human,
-		Computer
-	};
-	PlayerType currentPlayer = Human;
-	PlayerType whoStart = Human;
-	Player* player;
-	
+	Player* currentPlayer;
 
 	HumanPlayer& human;
 	ComputerPlayer& computer;
