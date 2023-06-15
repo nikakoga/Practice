@@ -25,3 +25,9 @@ bool Player::ChooseToMatchOrFold(int amount)
 {
 	return false;
 }
+
+int Player::FindBestCombination()
+{
+
+	return 0;
+}

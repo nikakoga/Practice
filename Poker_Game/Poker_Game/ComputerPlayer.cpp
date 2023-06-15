@@ -10,7 +10,7 @@ void ComputerPlayer::PayUp(int amount)
 	if (credits >= amount)
 	{
 		credits -= amount;
-		creditsSpend += amount; 
+		creditsSpend += amount;  //moze potem do usuniecia aby chociaz jedna funkcja dzialala calkowicie z bazowej klasy
 	}
 	else
 	{

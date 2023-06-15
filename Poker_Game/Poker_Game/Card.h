@@ -17,5 +17,8 @@ public:
 private:
     std::string colour;
     std::string value;
+
+    //moze przeciazyc operator < zeby porownywac wartosci kart 
+    //moze + zeby latwiej tworzyc zestawy kart?
 };
 

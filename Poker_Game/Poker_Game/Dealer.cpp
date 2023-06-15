@@ -1,6 +1,6 @@
 #include "Dealer.h"
 
-Dealer::Dealer(Deck& _deck, HumanPlayer& _human, ComputerPlayer& _computer)
+Dealer::Dealer(Deck& _deck, HumanPlayer& _human, ComputerPlayer& _computer) 
 	: Player(_deck), human(_human), computer(_computer)
 {
 	name = "dealer";
@@ -13,11 +13,12 @@ void Dealer::TakeCard()
 	while (!CreditCheck())
 	{
 		int toPay = HowManyNotEven();
-		if (currentPlayer = Human) //!!!!!!! tu powinno byc ==
+		if (currentPlayer == Human) 
 		{
 			if (human.ChooseToMatchOrFold(toPay))
 			{
 				//pobieranie kasy
+				human.PayUp(toPay);
 			}
 			else
 			{
@@ -48,6 +49,7 @@ void Dealer::ShowTable()
 void Dealer::SetWinner()
 {
 	//porownuje ktora reka jest silniejsza
+	//potrzeba stworzyc kombinacje z wszystkich kart
 }
 
 bool Dealer::CreditCheck()
