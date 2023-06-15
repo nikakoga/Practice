@@ -14,7 +14,6 @@ public:
 	HumanPlayer& human;
 	ComputerPlayer& computer;
 	
-
 	void PayStartFee();
 	void Play();
 };

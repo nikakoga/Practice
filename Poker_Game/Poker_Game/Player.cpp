@@ -8,6 +8,15 @@ void Player::TakeCard()
 
 }
 
+void Player::PayUp(int amount, std::string context)
+{
+}
+
+void Player::Raise()
+{
+	
+}
+
 
 bool Player::ChooseToMatchOrFold(int amount)
 {

@@ -5,7 +5,7 @@ ComputerPlayer::ComputerPlayer(Deck& deck) : Player(deck)
 	name = "computer";
 }
 
-void ComputerPlayer::PayUp(int amount)
+void ComputerPlayer::PayUp(int amount, std::string context)
 {
 	if (credits >= amount)
 	{
@@ -16,6 +16,11 @@ void ComputerPlayer::PayUp(int amount)
 	{
 		//przegrana
 	}
+}
+
+void ComputerPlayer::Raise()
+{
+	
 }
 
 bool ComputerPlayer::ChooseRaise(int amount)

@@ -16,6 +16,7 @@ public:
 	};
 	PlayerType currentPlayer = Human;
 	PlayerType whoStart = Human;
+	Player* player;
 	
 
 	HumanPlayer& human;

@@ -32,7 +32,7 @@ void Dealer::GiveCard()
 			if (computer.ChooseToMatchOrFold(toPay))
 			{
 				//pobieranie kasy
-				computer.PayUp(toPay);
+				computer.PayUp(toPay, "match");
 			}
 			else
 			{

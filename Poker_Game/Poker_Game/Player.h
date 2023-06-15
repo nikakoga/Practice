@@ -17,8 +17,11 @@ public:
 
 	//Take card.
 	virtual void TakeCard();
+    virtual void PayUp(int amount, std::string context);
+    virtual void Raise();
 	virtual bool ChooseToMatchOrFold(int amount); 
     virtual bool ChooseRaise(int amount);
+
 
     void GenerateCombinations(int howManyToPick);
 	int FindBestCombination();

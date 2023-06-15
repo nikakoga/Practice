@@ -10,5 +10,5 @@ Round::Round(Dealer& _dealer, HumanPlayer& _human, ComputerPlayer& _computer)
 void Round::PayStartFee()
 {
 	human.PayUp(startPay,"start");
-	computer.PayUp(startPay);
+	computer.PayUp(startPay,"start");
 }

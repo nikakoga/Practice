@@ -14,7 +14,7 @@ public:
 
     bool ChooseRaise(int amount) override;
 
-    void Raise();
+    void Raise() override;
     
     void TakeCard() override;
 
