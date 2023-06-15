@@ -9,11 +9,10 @@ Round::Round(Dealer& _dealer, HumanPlayer& _human, ComputerPlayer& _computer)
 		PayStartFee();
 		dealer.SetTable();
 	}
-	if(human.lost)
+	if (human.lost)
 
 
-	human.CleanAfterRound();
-	computer.CleanAfterRound();
+	dealer.Clean();
 	
 }
 

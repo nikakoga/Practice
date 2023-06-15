@@ -9,35 +9,22 @@ Dealer::Dealer(Deck& _deck, HumanPlayer& _human, ComputerPlayer& _computer)
 
 void Dealer::CheckAmount()
 {
-	bool pass = false;
-
 	//sprawdza czy aktualny gracz wylozyl odpowiednio duzo
-	while (currentPlayer->creditsSpent < otherPlayer->creditsSpent)
+	while (currentPlayer->creditsOnTable < otherPlayer->creditsOnTable)
 	{
 		int toPay = HowManyNotEven();
 		//jesli nie to wybiera czy doplacic
 		if (currentPlayer->ChooseToMatchOrFold(toPay))
 		{
-			currentPlayer->PayUp(toPay, "match");			
+			currentPlayer->PayUp(toPay, "match");	
 		}
 		//czy spasowac
 		else
 		{
-			pass = true;
 			Pass();
 			break;
 		}
-
 	}
-	//jesli nie spasowal moze przebic
-	if (!pass)
-	{
-		if (currentPlayer->ChooseRaise())
-		{
-			currentPlayer->Raise();
-		}
-	}
-	
 }
 
 void Dealer::GiveCard()
@@ -58,12 +45,19 @@ void Dealer::GiveCard()
 	}
 }
 
+void Dealer::Turn()
+{
+	if (currentPlayer->ChooseRaise())
+	{
+		currentPlayer->Raise();
+	}
+}
+
 void Dealer::NextPlayer()
 {
 	Player* temp = currentPlayer;
 	currentPlayer = otherPlayer;
 	otherPlayer = temp;
-
 }
 
 
@@ -89,32 +83,41 @@ void Dealer::SetWinner()
 {
 	//porownuje ktora reka jest silniejsza
 	//potrzeba stworzyc kombinacje z wszystkich kart
-	roundFinished = true;
+	
 }
 
 
 int Dealer::HowManyNotEven()
 {
-	int notEven = otherPlayer->creditsSpent - currentPlayer->creditsSpent;
-	
+	int notEven = otherPlayer->creditsOnTable - currentPlayer->creditsOnTable;
 	return notEven;
+}
+
+void Dealer::PayToWinner(Player * winner) //nie wiem czy dziala
+{
+	creditsOnTable = human.creditsOnTable + computer.creditsOnTable;
+	winner->credits += creditsOnTable;
 }
 
 void Dealer::Pass()
 {
 	if (currentPlayer==&computer) //jesli wskaznik ma ten sam adres to wskazuja na to samo
 	{
-		//kasa do czlowieka
-		human.credits += credits;
-
+		//komp przegral
+		computer.lost = true;
 	}
 	else if(currentPlayer==&human)
 	{
-		//kasa do kompa
-		computer.credits += credits;
+		//czlowiek przegral
+		human.lost = true;
 	}
+}
 
-	roundFinished = true;
+void Dealer::Clean()
+{
+	CleanAfterRound();
+	human.CleanAfterRound();
+	computer.CleanAfterRound();
 }
 
 
