@@ -17,9 +17,9 @@ class ComputerPlayer :
             //funkcja decyduj¹ca czy dolozyc czy spasowac
             return true;
         }
-
         
         //funkcja decydujaca czy podbic (jesli podbicie to wypisanie na ekran)
+        bool ChooseRaise(int amount) override;
 
         
        

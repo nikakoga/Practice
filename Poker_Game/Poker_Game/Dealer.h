@@ -15,8 +15,8 @@ public:
 		Computer
 	};
 	PlayerType currentPlayer = Human;
-	PlayerType whoStarte = Human;
-	int startPay = 10;
+	PlayerType whoStart = Human;
+	
 
 	HumanPlayer& human;
 	ComputerPlayer& computer;

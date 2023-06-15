@@ -19,6 +19,8 @@ public:
 	virtual void TakeCard();
 	virtual void PayUp(int amount);
 	virtual bool ChooseToMatchOrFold(int amount); 
+    virtual bool ChooseRaise(int amount);
+
     void GenerateCombinations(int howManyToPick);
 	int FindBestCombination();
 

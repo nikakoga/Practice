@@ -17,3 +17,8 @@ void ComputerPlayer::PayUp(int amount)
 		//przegrana
 	}
 }
+
+bool ComputerPlayer::ChooseRaise(int amount)
+{
+	return false;
+}

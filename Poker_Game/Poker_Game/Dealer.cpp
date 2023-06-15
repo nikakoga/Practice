@@ -18,7 +18,7 @@ void Dealer::GiveCard()
 			if (human.ChooseToMatchOrFold(toPay))
 			{
 				//pobieranie kasy
-				human.PayUp(toPay);
+				human.PayUp(toPay,"match");
 			}
 			else
 			{

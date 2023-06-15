@@ -26,6 +26,11 @@ bool Player::ChooseToMatchOrFold(int amount)
 	return false;
 }
 
+bool Player::ChooseRaise(int amount)
+{
+	return false;
+}
+
 void Player::GenerateCombinations(int howManyToPick)
 {
 	std::vector<bool> combinationMask(hand.size(), false);

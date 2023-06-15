@@ -11,10 +11,10 @@ HumanPlayer::HumanPlayer(Deck& deck) : Player(deck)
 bool HumanPlayer::ChooseToMatchOrFold(int amount)
 {
 	std::cout << "Do you want to:" << "\n" << "1 - match the current bet" << "\n" << "or" << "\n" << "2 - fold your hand";
-	int respond = SafeRespond();
+	int respond = SafeChooseBetweenTwo();
 	if (respond == 1)
 	{
-		PayUp(amount);
+		PayUp(amount,"match");
 		return true;
 	}
 	else
@@ -24,13 +24,44 @@ bool HumanPlayer::ChooseToMatchOrFold(int amount)
 	}
 }
 
+bool HumanPlayer::ChooseRaise(int amount)
+{
+	std::cout << "Do you want to Raise? :" << "\n" << "1 - No" <<"\n" << "2 - Yes";
+	int respond = SafeChooseBetweenTwo();
+	if (respond == 1)
+	{
+		return false;
+	}
+	else
+	{	
+		return true;
+	}
+}
+
+void HumanPlayer::Raise()
+{
+	std::cout << "How much?" << "\n";
+	std::string input;
+	std::cin >> input;
+
+	if (IsInteger(input)) 
+	{
+		int number = std::stoi(input);
+		PayUp(number, "raise");
+
+	}
+	else {
+		std::cout << "Invalid input. Please enter an integer." << std::endl;
+	}
+}
+
 void HumanPlayer::TakeCard()
 {
 	hand.push_back(deck.GetCard());
 	ShowHand();
 }
 
-void HumanPlayer::PayUp(int amount)
+void HumanPlayer::PayUp(int amount, std::string context)
 {
 	if (credits >= amount)
 	{
@@ -39,7 +70,18 @@ void HumanPlayer::PayUp(int amount)
 	}
 	else
 	{
-		//przegrana
+		std::cout << "This is more than " << credits << " you have" << "\n";
+
+		if (context == "match" || context =="start")
+		{
+			//przegrana
+		}
+		else if (context == "raise")
+		{
+			 std::cout<< "Please enter again or input 0 if you dont want to raise" << "\n";
+			 Raise();
+		}
+		
 	}
 }
 
@@ -52,14 +94,14 @@ void HumanPlayer::ShowHand()
 	}
 }
 
-int HumanPlayer::SafeRespond()
+int HumanPlayer::SafeChooseBetweenTwo()
 {
 	int answer = 0;
 
 	while (true) {
 		std::cin >> answer;
 		if (!std::cin || (answer != 1 && answer != 2)) {
-			std::cout << "Wrong choice. Enter again: " << "\n";
+			std::cout << "There is no such option. Enter again: " << "\n";
 			std::cin.clear();
 			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 			continue;
@@ -70,4 +112,16 @@ int HumanPlayer::SafeRespond()
 	}
 
 	return answer;
+}
+
+bool HumanPlayer::IsInteger(std::string input)
+{
+	try {
+		std::stoi(input);
+		return true;
+	}
+	catch (const std::exception&) {
+		
+	}
+	return false;
 }

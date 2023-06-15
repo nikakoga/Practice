@@ -6,15 +6,23 @@ class HumanPlayer :
 public:
     HumanPlayer(Deck& deck);
 
+    int SafeChooseBetweenTwo();
+
+    bool IsInteger(std::string input);
+
     bool ChooseToMatchOrFold(int amount) override;
+
+    bool ChooseRaise(int amount) override;
+
+    void Raise();
     
     void TakeCard() override;
 
-    void PayUp(int amount) override;
+    void PayUp(int amount, std::string context);
 
     void ShowHand();
 
-    int SafeRespond();
+   
     
 };
 
