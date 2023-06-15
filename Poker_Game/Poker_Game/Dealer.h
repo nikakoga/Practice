@@ -11,9 +11,10 @@ public:
 	Dealer(Deck& deck, HumanPlayer& _human, ComputerPlayer& _computer ); 
 
 	Player* currentPlayer;
-
+	Player* otherPlayer;
 	HumanPlayer& human;
 	ComputerPlayer& computer;
+
 	int creditsFromHuman=0;
 	int creditsFromComputer=0;
 	

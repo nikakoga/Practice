@@ -10,7 +10,7 @@ Dealer::Dealer(Deck& _deck, HumanPlayer& _human, ComputerPlayer& _computer)
 void Dealer::GiveCard()
 {
 	//0. sprawdza czy oboje gracze wylozyli na stol tyle samo
-	while (!CreditCheck())
+	while (currentPlayer->creditsSpent < otherPlayer->creditsSpent)
 	{
 		int toPay = HowManyNotEven();
 		if (currentPlayer->ChooseToMatchOrFold(toPay))
@@ -73,15 +73,8 @@ bool Dealer::CreditCheck()
 
 int Dealer::HowManyNotEven()
 {
-	int notEven = 0;
-	if (creditsFromHuman > creditsFromComputer)
-	{
-		notEven = creditsFromHuman - creditsFromComputer;
-	}
-	else
-	{
-		notEven = creditsFromComputer - creditsFromHuman;
-	}
+	int notEven = otherPlayer->creditsSpent - currentPlayer->creditsSpent;
+	
 	return notEven;
 }
 
