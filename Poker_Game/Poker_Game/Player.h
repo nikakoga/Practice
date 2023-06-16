@@ -9,6 +9,7 @@ class Player
 public:
 	Player(Deck& _deck);
 
+    bool finished = false;
 	int credits = 1000;
     int creditsOnTable = 0;
 	std::string name;

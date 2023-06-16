@@ -4,6 +4,7 @@ Round::Round(Dealer& _dealer, HumanPlayer& _human, ComputerPlayer& _computer, Pl
 	: dealer(_dealer), human(_human), computer(_computer)
 {
 	startPlayer = _currentPlayer;
+	dealer.currentPlayer = startPlayer;
 	
 }
 
@@ -18,10 +19,29 @@ void Round::Play()
 	while (!human.lost || !computer.lost) //dopoki komputer lub czlowiek nie przegra
 	{
 		PayStartFee();
+		Auctions();
 		dealer.SetTable();
+		Auctions();
+		dealer.GiveCard();
+		Auctions();
+		dealer.GiveCard();
+		Auctions();
+		//ocena kombinacji
+		//porownanie
+		//kasa do wygranego
 	}
 	if (human.lost)
 
 
-		dealer.Clean();
+	dealer.Clean();
+}
+
+void Round::Auctions()
+{
+	while (!human.finished && !computer.finished)
+	{
+		dealer.OptionMatchOrFold();
+		dealer.OptionRaise();
+		dealer.NextPlayer();
+	}
 }

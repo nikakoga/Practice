@@ -5,29 +5,35 @@ Dealer::Dealer(Deck& _deck, HumanPlayer& _human, ComputerPlayer& _computer)
 {
 	name = "dealer";
 	credits = 0;
+	creditsOnTable = 0;
+	finished = false;
 }
 
-void Dealer::CheckMatch()
+void Dealer::OptionMatchOrFold()
 {
 	//sprawdza czy aktualny gracz wylozyl odpowiednio duzo
 	while (currentPlayer->creditsOnTable < otherPlayer->creditsOnTable)
 	{
 		int toPay = HowManyNotEven();
 		//jesli nie to wybiera czy doplacic
-		if (currentPlayer->ChooseToMatchOrFold(toPay))
+		if (!currentPlayer->ChooseToMatchOrFold(toPay)) //jesli spassuje
 		{
-			currentPlayer->PayUp(toPay, "match");	
+			currentPlayer->PayUp(toPay, "match");
+			
 		}
 		//czy spasowac
 		else
 		{
 			Pass();
+			//powinna zakonczyc sie tura
 			break;
 		}
 	}
+	
+	
 }
 
-void Dealer::CheckRaise()
+void Dealer::OptionRaise()
 {
 	if (currentPlayer->ChooseRaise())
 	{
@@ -38,15 +44,8 @@ void Dealer::CheckRaise()
 
 void Dealer::GiveCard()
 {
-	//1. doklada karte
 	TakeCard();
-	//2. wyswietla stol
 	ShowTable();
-
-	if (hand.size() == 5)
-	{
-		SetWinner(); //!!!!!!! to tu raczej nie powinno byc
-	}
 }
 
 
@@ -98,6 +97,10 @@ void Dealer::PayToWinner(Player * winner) //nie wiem czy dziala
 
 void Dealer::Pass()
 {
+	//koniec tury
+	human.finished = true;
+	computer.finished = true;
+
 	if (currentPlayer==&computer) //jesli wskaznik ma ten sam adres to wskazuja na to samo
 	{
 		//komp przegral

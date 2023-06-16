@@ -5,8 +5,10 @@ HumanPlayer::HumanPlayer(Deck& deck) : Player(deck)
 	std::string player;
 	std::cout << "Enter player name"<<"\n";
 	std::cin >> player;
-	name = player;
+	name = player;	
 	creditsOnTable = 0;
+	credits = 1000;
+	finished = false;
 }
 
 bool HumanPlayer::ChooseToMatchOrFold(int amount)
@@ -15,7 +17,6 @@ bool HumanPlayer::ChooseToMatchOrFold(int amount)
 	int respond = SafeChooseBetweenTwo();
 	if (respond == 1)
 	{
-		PayUp(amount,"match");
 		return true;
 	}
 	else
@@ -31,6 +32,7 @@ bool HumanPlayer::ChooseRaise()
 	int respond = SafeChooseBetweenTwo();
 	if (respond == 1)
 	{
+		finished = true; //ustawiam flage ze ten gracz juz chce skonczyc ture
 		return false;
 	}
 	else
@@ -48,11 +50,15 @@ void HumanPlayer::Raise()
 	if (IsInteger(input)) 
 	{
 		int number = std::stoi(input);
-		PayUp(number, "raise");
-
+		if (number > 0)
+		{
+			PayUp(number, "raise");
+			finished = false; //ustawiam flage ze ten gracz przedluza czas trwania tury
+		}
 	}
 	else {
-		std::cout << "Invalid input. Please enter an integer." << std::endl;
+		std::cout << "Invalid input. Please try again or enter 0 if you dont want to raise." << std::endl;
+		Raise(); //nie wiem czy to dobra praktyka, w sumie jakby ktos sie postaral moglby doprowadzic do stackoverflow
 	}
 }
 

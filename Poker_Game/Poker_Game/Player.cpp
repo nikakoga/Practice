@@ -1,6 +1,8 @@
 #include "Player.h"
 
-Player::Player(Deck& _deck) : deck(_deck) {}
+Player::Player(Deck& _deck) : deck(_deck) 
+{
+}
 
 void Player::TakeCard()
 {
@@ -31,6 +33,7 @@ void Player::CleanAfterRound()
 	lost = false;
 	creditsOnTable = 0;
 	hand.clear();
+	finished = false;
 }
 
 void Player::GenerateCombinations(int howManyToPick)

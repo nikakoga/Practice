@@ -20,8 +20,8 @@ public:
 	void SetTable();
 	void ShowTable();
 
-	void CheckMatch();
-	void CheckRaise();
+	void OptionMatchOrFold();
+	void OptionRaise();
 	int HowManyNotEven();
 	void PayToWinner(Player * winner);
 

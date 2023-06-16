@@ -15,9 +15,10 @@ int main()
     HumanPlayer human(deck);
     ComputerPlayer comp(deck);
     Dealer dealer(deck, human, comp);
-    Round round(dealer, human, comp);
+    Player* current = &human;
+    Round round(dealer, human, comp,current);
     
-    //To do polimorfizm, ale na razie go solidnie wykrzacza
+    
 }
 
 
