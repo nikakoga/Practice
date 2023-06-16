@@ -43,22 +43,26 @@ bool HumanPlayer::ChooseRaise()
 
 void HumanPlayer::Raise()
 {
-	std::cout << "How much?" << "\n";
-	std::string input;
-	std::cin >> input;
-
-	if (IsInteger(input)) 
+	bool validInput = false;
+	while (!validInput)
 	{
-		int number = std::stoi(input);
-		if (number > 0)
+		std::cout << "How much?" << "\n";
+		std::string input;
+		std::cin >> input;
+
+		if (IsInteger(input))
 		{
-			PayUp(number, "raise");
-			finished = false; //ustawiam flage ze ten gracz przedluza czas trwania tury
+			int number = std::stoi(input);
+			if (number > 0)
+			{
+				PayUp(number, "raise");
+				finished = false; //ustawiam flage ze ten gracz przedluza czas trwania tury
+			}
+			validInput = true;
 		}
-	}
-	else {
-		std::cout << "Invalid input. Please try again or enter 0 if you dont want to raise." << std::endl;
-		Raise(); //nie wiem czy to dobra praktyka, w sumie jakby ktos sie postaral moglby doprowadzic do stackoverflow
+		else {
+			std::cout << "Invalid input. Please try again or enter 0 if you dont want to raise." << std::endl;
+		}
 	}
 }
 
@@ -90,7 +94,6 @@ void HumanPlayer::PayUp(int amount, std::string context)
 			 std::cout<< "Please try again or enter 0 if you dont want to raise" << "\n";
 			 Raise();
 		}
-		
 	}
 }
 
