@@ -30,6 +30,7 @@ void Round::Play()
 		//ocena kombinacji
 		//porownanie
 		//kasa do wygranego
+		std::cout << "- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - " << "\n" << "\n";
 	}
 	if (human.lost)
 

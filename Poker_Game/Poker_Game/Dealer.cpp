@@ -16,13 +16,7 @@ void Dealer::OptionMatchOrFold()
 	{
 		int toPay = HowManyNotEven();
 		//jesli nie to wybiera czy doplacic
-		if (!currentPlayer->ChooseToMatchOrFold(toPay)) //jesli spassuje
-		{
-			currentPlayer->PayUp(toPay, "match");
-			
-		}
-		//czy spasowac
-		else
+		if (!currentPlayer->ChooseToMatchOrFold(toPay)) // jesli nie chce doplacic
 		{
 			Pass();
 			//powinna zakonczyc sie tura

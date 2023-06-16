@@ -17,18 +17,22 @@ bool HumanPlayer::ChooseToMatchOrFold(int amount)
 	int respond = SafeChooseBetweenTwo();
 	if (respond == 1)
 	{
+		PayUp(amount, "match");
 		return true;
 	}
 	else
 	{
 		//passowanie
+		std::cout << name << " folds" << "\n";
+		finished = true;
+		lost = true;
 		return false;
 	}
 }
 
 bool HumanPlayer::ChooseRaise()
 {
-	std::cout << "Do you want to Raise? :" << "\n" << "1 - No" <<"\n" << "2 - Yes";
+	std::cout << "Do you want to Raise? :" << "\n" << "1 - No" <<"\n" << "2 - Yes" << "\n";
 	int respond = SafeChooseBetweenTwo();
 	if (respond == 1)
 	{
@@ -55,14 +59,13 @@ void HumanPlayer::Raise()
 			int number = std::stoi(input);
 			if (number > 0)
 			{
-				std::cout << name << "podbija stawke o " << number << "\n";
 				PayUp(number, "raise");
 				finished = false; //ustawiam flage ze ten gracz przedluza czas trwania tury
 			}
 			validInput = true;
 		}
 		else {
-			std::cout << "Invalid input. Please try again or enter 0 if you dont want to raise." << std::endl;
+			std::cout << "Invalid input. Please try again or enter 0 if you dont want to raise." << "\n";
 		}
 	}
 }
@@ -79,7 +82,8 @@ void HumanPlayer::PayUp(int amount, std::string context)
 	{
 		credits -= amount;
 		creditsOnTable += amount;
-		std::cout << "Your credits left: " << credits << "\n\n";
+		std::cout << name<<" paid " << amount << " to " << context << "\n";
+		std::cout << name<<" credits left: " << credits << "\n" << "\n";
 	}
 	else
 	{
