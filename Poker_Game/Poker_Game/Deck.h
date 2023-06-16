@@ -16,14 +16,16 @@ class Deck
 {
 public:
 	Deck();
-	std::vector<Card> deck;
-
-	void Show_available();
+	
+	void ShowAvailable();
 	void ShuffleDeck();
 	void CreateDeck();
-	
-
 	Card GetCard();
+	void NewRound();
+
+private:
+	std::vector<Card> deck;
+	void ClearDeck();
 
 };
 

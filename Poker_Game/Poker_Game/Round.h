@@ -14,6 +14,7 @@ public:
 	ComputerPlayer& computer;
 	
 	void PayStartFee();
-	void Turn();
+	void Play(); //ma sie dziac tutaj a nie w konstruktorze
+	void Turn(); 
 };
 

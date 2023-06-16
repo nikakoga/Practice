@@ -5,7 +5,7 @@ Deck::Deck()
 	CreateDeck();
 }
 
-void Deck::Show_available()
+void Deck::ShowAvailable()
 {
 	std::cout << "Dostepne karty" << "\n";
 	for (auto card : deck)
@@ -46,6 +46,12 @@ Card Deck::GetCard()
 	Card drawnCard = deck.back();
 	deck.pop_back();
 	return drawnCard;
+}
+
+void Deck::NewRound()
+{
+	ClearDeck();
+	CreateDeck();
 }
 
 void Deck::ClearDeck()
