@@ -54,6 +54,7 @@ void Dealer::NextPlayer()
 	Player* temp = currentPlayer;
 	currentPlayer = otherPlayer;
 	otherPlayer = temp;
+	std::cout<< currentPlayer->name << " turn" << "\n";
 }
 
 

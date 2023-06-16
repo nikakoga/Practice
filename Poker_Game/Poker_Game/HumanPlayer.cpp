@@ -55,6 +55,7 @@ void HumanPlayer::Raise()
 			int number = std::stoi(input);
 			if (number > 0)
 			{
+				std::cout << name << "podbija stawke o " << number << "\n";
 				PayUp(number, "raise");
 				finished = false; //ustawiam flage ze ten gracz przedluza czas trwania tury
 			}

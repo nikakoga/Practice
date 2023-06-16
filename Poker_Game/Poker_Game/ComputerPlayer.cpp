@@ -24,7 +24,7 @@ void ComputerPlayer::PayUp(int amount, std::string context)
 
 void ComputerPlayer::Raise()
 {
-	
+	std::cout << "Computer raise " << "\n";
 }
 
 bool ComputerPlayer::ChooseRaise()

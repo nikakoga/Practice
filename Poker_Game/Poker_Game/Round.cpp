@@ -18,6 +18,7 @@ void Round::Play()
 {
 	while (!human.lost || !computer.lost) //dopoki komputer lub czlowiek nie przegra
 	{
+		std::cout << startPlayer->name << " starts" << "\n";
 		PayStartFee();
 		Auctions();
 		dealer.SetTable();
