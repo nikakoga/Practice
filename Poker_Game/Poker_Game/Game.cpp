@@ -1,11 +1,9 @@
 #include "Game.h"
 
-Game::Game(Dealer& _dealer, HumanPlayer& _human, ComputerPlayer& _computer, Player* _currentPlayer) 
+Game::Game(Dealer& _dealer, HumanPlayer& _human, ComputerPlayer& _computer, Player* _startPlayer)
 	: dealer(_dealer), human(_human), computer(_computer)
 {
-	startPlayer = _currentPlayer;
 	dealer.currentPlayer = startPlayer;
-	
 }
 
 void Game::PayStartFee()
@@ -37,7 +35,7 @@ void Game::Play()
 		}
 		if (human.lostRound)
 
-
+		
 		dealer.Clean();
 	}
 }
@@ -60,3 +58,16 @@ bool Game::GameOver()
 	}
 	return false;
 }
+
+void Game::StartPlayerSwitch()
+{
+	if (startPlayer == &human)
+	{
+		startPlayer = &computer;
+	}
+	else
+	{
+		startPlayer = &human;
+	}
+}
+
