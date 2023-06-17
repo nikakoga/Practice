@@ -11,7 +11,7 @@ Dealer::Dealer(Deck& _deck, HumanPlayer& _human, ComputerPlayer& _computer)
 
 void Dealer::OptionMatchOrFold()
 {
-
+	ShowCreditsInfo();
 	//sprawdza czy aktualny gracz wylozyl odpowiednio duzo
 	while (currentPlayer->creditsOnTable < otherPlayer->creditsOnTable)
 	{
@@ -46,10 +46,7 @@ void Dealer::NextPlayer()
 {
 	Player* temp = currentPlayer;
 	currentPlayer = otherPlayer;
-	otherPlayer = temp;
-	std::cout<< currentPlayer->name << " turn" << "\n";
-	ShowCreditsInfo();
-	currentPlayer->ShowCreditsInfo();
+	otherPlayer = temp;	
 }
 
 
@@ -73,7 +70,9 @@ void Dealer::ShowTable()
 
 void Dealer::ShowCreditsInfo()
 {
+	std::cout <<"\n"<< currentPlayer->name << " turn" << "\n";
 	std::cout << "There is " << human.creditsOnTable + computer.creditsOnTable << " credits on Table" << "\n";
+	currentPlayer->ShowCreditsInfo();
 }
 
 void Dealer::SetWinner()

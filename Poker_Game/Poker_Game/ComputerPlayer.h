@@ -10,12 +10,7 @@ class ComputerPlayer :
         void PayUp(int amount, std::string context) override;
         void Raise() override;
 
-        bool ChooseToMatchOrFold(int amount) override
-        {
-            //funkcja decyduj¹ca czy dolozyc czy spasowac
-            return true;
-        }
-        
+        bool ChooseToMatchOrFold(int amount) override;
         //funkcja decydujaca czy podbic (jesli podbicie to wypisanie na ekran)
         bool ChooseRaise() override;
 

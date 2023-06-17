@@ -2,7 +2,7 @@
 
 ComputerPlayer::ComputerPlayer(Deck& deck) : Player(deck)
 {
-	name = "computer";
+	name = "Computer";
 	creditsOnTable = 0;
 	credits = 1000;
 	finished = false;
@@ -15,7 +15,8 @@ void ComputerPlayer::PayUp(int amount, std::string context)
 	if (credits >= amount)
 	{
 		credits -= amount;
-		creditsOnTable += amount;  //moze potem do usuniecia aby chociaz jedna funkcja dzialala calkowicie z bazowej klasy
+		creditsOnTable += amount;
+		std::cout << name << " paid " << amount << " to " << context << "\n"<<"\n";
 	}
 	else
 	{
@@ -29,7 +30,17 @@ void ComputerPlayer::Raise()
 	std::cout << "Computer raise " << "\n";
 }
 
+bool ComputerPlayer::ChooseToMatchOrFold(int amount)
+{
+	//funkcja decyduj¹ca czy dolozyc czy spasowac
+	//ZMIEN POTEM NA RAZIE NA SZTYWNO JEST NA TAK I PLACENIE
+	PayUp(amount, "match");
+	return true;
+}
+
 bool ComputerPlayer::ChooseRaise()
 {
+	//ZMIEN POTEM NA RAZIE NA SZTYWNO JEST NA NIE I KONIEC TURY
+	finished = true;
 	return false;
 }
