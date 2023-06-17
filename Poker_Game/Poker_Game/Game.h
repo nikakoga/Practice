@@ -2,10 +2,10 @@
 #include "Dealer.h"
 
 
-class Round
+class Game
 {
 public:
-	Round(Dealer& _dealer, HumanPlayer& _human, ComputerPlayer& _computer, Player* _startPlayer);
+	Game(Dealer& _dealer, HumanPlayer& _human, ComputerPlayer& _computer, Player* _startPlayer);
 
 	int startPay = 10;
 	
@@ -17,5 +17,6 @@ public:
 	void PayStartFee();
 	void Play(); //ma sie dziac tutaj a nie w konstruktorze
 	void Auctions(); 
+	bool GameOver();
 };
 

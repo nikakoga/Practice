@@ -30,7 +30,7 @@ bool Player::ChooseRaise()
 
 void Player::CleanAfterRound()
 {
-	lost = false;
+	lostRound = false;
 	creditsOnTable = 0;
 	hand.clear();
 	finished = false;

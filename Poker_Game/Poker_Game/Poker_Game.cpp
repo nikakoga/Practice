@@ -1,7 +1,7 @@
 // Poker_Game.cpp : This file contains the 'main' function. Program execution begins and ends there.
 //
 #include <iostream>
-#include "Round.h"
+#include "Game.h"
 
 int main()
 {
@@ -16,7 +16,7 @@ int main()
     ComputerPlayer comp(deck);
     Dealer dealer(deck, human, comp);
     Player* current = &human;
-    Round round(dealer, human, comp,current);
+    Game game(dealer, human, comp,current);
     
     
 }

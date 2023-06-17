@@ -11,11 +11,13 @@ public:
 
     bool finished = false;
     bool bankrupt = false;
+    bool lostRound = false;
+
 	int credits = 1000;
     int creditsOnTable = 0;
 	std::string name;
 	std::vector<Card> hand;
-    bool lost = false;
+    
 	//std::unordered_set<Card> bestCombination; //NAPRAW BO WYKRZACZA
 	Deck& deck;
 

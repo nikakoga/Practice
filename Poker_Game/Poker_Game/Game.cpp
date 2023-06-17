@@ -1,6 +1,6 @@
-#include "Round.h"
+#include "Game.h"
 
-Round::Round(Dealer& _dealer, HumanPlayer& _human, ComputerPlayer& _computer, Player* _currentPlayer) 
+Game::Game(Dealer& _dealer, HumanPlayer& _human, ComputerPlayer& _computer, Player* _currentPlayer) 
 	: dealer(_dealer), human(_human), computer(_computer)
 {
 	startPlayer = _currentPlayer;
@@ -8,13 +8,13 @@ Round::Round(Dealer& _dealer, HumanPlayer& _human, ComputerPlayer& _computer, Pl
 	
 }
 
-void Round::PayStartFee()
+void Game::PayStartFee()
 {
 	human.PayUp(startPay,"start");
 	computer.PayUp(startPay,"start");
 }
 
-void Round::Play()
+void Game::Play()
 {
 	while (!GameOver())
 	{
@@ -42,7 +42,7 @@ void Round::Play()
 	}
 }
 
-void Round::Auctions()
+void Game::Auctions()
 {
 	while (!human.finished && !computer.finished)
 	{
@@ -52,7 +52,7 @@ void Round::Auctions()
 	}
 }
 
-bool Round::GameOver()
+bool Game::GameOver()
 {
 	if (human.bankrupt || computer.bankrupt)
 	{

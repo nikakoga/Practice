@@ -99,12 +99,12 @@ void Dealer::Pass()
 	if (currentPlayer==&computer) //jesli wskaznik ma ten sam adres to wskazuja na to samo
 	{
 		//komp przegral
-		computer.lost = true;
+		computer.lostRound = true;
 	}
 	else if(currentPlayer==&human)
 	{
 		//czlowiek przegral
-		human.lost = true;
+		human.lostRound = true;
 	}
 }
 

@@ -9,6 +9,7 @@ HumanPlayer::HumanPlayer(Deck& deck) : Player(deck)
 	creditsOnTable = 0;
 	credits = 1000;
 	finished = false;
+	bankrupt = false;
 }
 
 bool HumanPlayer::ChooseToMatchOrFold(int amount)
@@ -25,7 +26,7 @@ bool HumanPlayer::ChooseToMatchOrFold(int amount)
 		//passowanie
 		std::cout << name << " folds" << "\n";
 		finished = true;
-		lost = true;
+		lostRound = true;
 		return false;
 	}
 }
@@ -92,7 +93,7 @@ void HumanPlayer::PayUp(int amount, std::string context)
 		if (context == "match" || context =="start")
 		{
 			//przegrana
-			lost = true;
+			bankrupt = true;
 		}
 		else if (context == "raise")
 		{

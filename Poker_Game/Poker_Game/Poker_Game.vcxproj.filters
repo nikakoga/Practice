@@ -36,7 +36,7 @@
     <ClCompile Include="Dealer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Round.cpp">
+    <ClCompile Include="Game.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -65,7 +65,7 @@
     <ClInclude Include="CardCombination.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Round.h">
+    <ClInclude Include="Game.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="PlayerType.h">
