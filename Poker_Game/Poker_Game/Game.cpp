@@ -3,7 +3,9 @@
 Game::Game(Dealer& _dealer, HumanPlayer& _human, ComputerPlayer& _computer, Player* _startPlayer)
 	: dealer(_dealer), human(_human), computer(_computer)
 {
+	startPlayer = _startPlayer;
 	dealer.currentPlayer = _startPlayer;
+	
 	if (startPlayer == &human){
 		dealer.otherPlayer = &computer;
 	}
@@ -49,6 +51,8 @@ void Game::Play()
 
 void Game::Auctions()
 {
+	human.finished = false;
+	computer.finished = false;
 	while (!human.finished && !computer.finished)
 	{
 		dealer.OptionMatchOrFold();
