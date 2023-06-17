@@ -16,26 +16,30 @@ void Round::PayStartFee()
 
 void Round::Play()
 {
-	while (!human.lost || !computer.lost) //dopoki komputer lub czlowiek nie przegra
+	while (!GameOver())
 	{
-		std::cout << startPlayer->name << " starts" << "\n";
-		PayStartFee();
-		Auctions();
-		dealer.SetTable();
-		Auctions();
-		dealer.GiveCard();
-		Auctions();
-		dealer.GiveCard();
-		Auctions();
-		//ocena kombinacji
-		//porownanie
-		//kasa do wygranego
-		std::cout << "- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - " << "\n" << "\n";
+		while (!human.lostRound || !computer.lostRound) //dopoki komputer lub czlowiek nie przegra
+		{
+			std::cout << startPlayer->name << " starts" << "\n";
+			PayStartFee();
+			Auctions();
+			dealer.SetTable();
+			Auctions();
+			dealer.GiveCard();
+			Auctions();
+			dealer.GiveCard();
+			Auctions();
+			//ocena kombinacji
+			//porownanie
+			//kasa do wygranego
+			std::cout << "- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - " << "\n" << "\n";
+			break; //dzieki temu wykona sie tylko raz lub nawet mniej jesli ktos przegra wczesniej
+		}
+		if (human.lostRound)
+
+
+		dealer.Clean();
 	}
-	if (human.lost)
-
-
-	dealer.Clean();
 }
 
 void Round::Auctions()
@@ -46,4 +50,13 @@ void Round::Auctions()
 		dealer.OptionRaise();
 		dealer.NextPlayer();
 	}
+}
+
+bool Round::GameOver()
+{
+	if (human.bankrupt || computer.bankrupt)
+	{
+		return true;
+	}
+	return false;
 }

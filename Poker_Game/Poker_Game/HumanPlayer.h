@@ -4,6 +4,8 @@ class HumanPlayer :
     public Player
 {
 public:
+
+    bool bankrupt = false;
     HumanPlayer(Deck& deck);
 
     int SafeChooseBetweenTwo();

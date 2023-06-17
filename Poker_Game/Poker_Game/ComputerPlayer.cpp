@@ -6,6 +6,8 @@ ComputerPlayer::ComputerPlayer(Deck& deck) : Player(deck)
 	creditsOnTable = 0;
 	credits = 1000;
 	finished = false;
+	lostRound = false;
+	bankrupt = false;
 }
 
 void ComputerPlayer::PayUp(int amount, std::string context)
@@ -18,7 +20,7 @@ void ComputerPlayer::PayUp(int amount, std::string context)
 	else
 	{
 		//przegrana
-		lost = true;
+		lostRound = true;
 	}
 }
 
