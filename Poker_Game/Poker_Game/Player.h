@@ -27,6 +27,7 @@ public:
     virtual void Raise();
 	virtual bool ChooseToMatchOrFold(int amount); 
     virtual bool ChooseRaise();
+    virtual void ShowCreditsInfo();
 
     void CleanAfterRound();
     void GenerateCombinations(int howManyToPick);
@@ -47,14 +48,5 @@ private:
         for (const auto& card : combination) {
             //tutaj przyznawanie punktow
         }
-        
     }
-
-	
 };
-
-	
-   
-
-
-

@@ -2,6 +2,7 @@
 
 Player::Player(Deck& _deck) : deck(_deck) 
 {
+	
 }
 
 void Player::TakeCard()
@@ -26,6 +27,10 @@ bool Player::ChooseToMatchOrFold(int amount)
 bool Player::ChooseRaise()
 {
 	return false;
+}
+
+void Player::ShowCreditsInfo()
+{
 }
 
 void Player::CleanAfterRound()

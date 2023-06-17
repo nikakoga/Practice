@@ -3,7 +3,14 @@
 Game::Game(Dealer& _dealer, HumanPlayer& _human, ComputerPlayer& _computer, Player* _startPlayer)
 	: dealer(_dealer), human(_human), computer(_computer)
 {
-	dealer.currentPlayer = startPlayer;
+	dealer.currentPlayer = _startPlayer;
+	if (startPlayer == &human){
+		dealer.otherPlayer = &computer;
+	}
+	else
+	{
+		dealer.otherPlayer = &human;
+	}
 }
 
 void Game::PayStartFee()
@@ -33,10 +40,10 @@ void Game::Play()
 			std::cout << "- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - " << "\n" << "\n";
 			break; //dzieki temu wykona sie tylko raz lub nawet mniej jesli ktos przegra wczesniej
 		}
-		if (human.lostRound)
+		//if (human.lostRound)
 
-		
 		dealer.Clean();
+		StartPlayerSwitch();
 	}
 }
 

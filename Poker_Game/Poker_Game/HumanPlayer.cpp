@@ -112,6 +112,11 @@ void HumanPlayer::ShowHand()
 	}
 }
 
+void HumanPlayer::ShowCreditsInfo()
+{
+	std::cout << "Credits you spend: " << creditsOnTable << "\n";
+}
+
 int HumanPlayer::SafeChooseBetweenTwo()
 {
 	int answer = 0;

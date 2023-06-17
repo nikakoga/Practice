@@ -13,10 +13,11 @@ int main()
     deck.Show_available();*/
 
     HumanPlayer human(deck);
-    ComputerPlayer comp(deck);
-    Dealer dealer(deck, human, comp);
+    ComputerPlayer computer(deck);
+    Dealer dealer(deck, human, computer);
     Player* current = &human;
-    Game game(dealer, human, comp,current);
+    Game game(dealer, human, computer,current);
+    game.Play();
     
     
 }

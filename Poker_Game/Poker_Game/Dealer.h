@@ -19,9 +19,11 @@ public:
 	
 	void SetTable();
 	void ShowTable();
+	void ShowCreditsInfo()override;
 
 	void OptionMatchOrFold();
 	void OptionRaise();
+
 	int HowManyNotEven();
 	void PayToWinner(Player * winner);
 

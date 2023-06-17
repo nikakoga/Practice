@@ -24,6 +24,8 @@ public:
 
     void ShowHand();
 
+    void ShowCreditsInfo() override;
+
    
     
 };

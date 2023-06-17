@@ -18,5 +18,6 @@ public:
 	void Play(); //ma sie dziac tutaj a nie w konstruktorze
 	void Auctions(); 
 	bool GameOver();
+	void StartPlayerSwitch();
 };
 
