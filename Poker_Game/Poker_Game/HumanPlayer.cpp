@@ -3,9 +3,10 @@
 HumanPlayer::HumanPlayer(Deck& deck) : Player(deck)
 {
 	std::string player;
-	std::cout << "Enter player name"<<"\n";
-	std::cin >> player;
-	name = player;	
+	//std::cout << "Enter player name"<<"\n";
+	//std::cin >> player;
+	//name = player;
+	name = "Nika";
 	creditsOnTable = 0;
 	credits = 1000;
 	finished = false;

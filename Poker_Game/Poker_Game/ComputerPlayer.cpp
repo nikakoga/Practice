@@ -41,6 +41,7 @@ bool ComputerPlayer::ChooseToMatchOrFold(int amount)
 bool ComputerPlayer::ChooseRaise()
 {
 	//ZMIEN POTEM NA RAZIE NA SZTYWNO JEST NA NIE I KONIEC TURY
+	std::cout << name << " dont raise" << "\n";
 	finished = true;
 	return false;
 }

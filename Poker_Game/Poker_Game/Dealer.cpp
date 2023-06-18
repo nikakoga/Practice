@@ -32,6 +32,10 @@ void Dealer::OptionRaise()
 	{
 		currentPlayer->Raise();
 	}
+	else
+	{
+		startPlayer->finished = true;
+	}
 }
 
 

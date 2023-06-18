@@ -12,6 +12,7 @@ public:
 
 	Player* currentPlayer;
 	Player* otherPlayer;
+	Player* startPlayer;
 	HumanPlayer& human;
 	ComputerPlayer& computer;
 
