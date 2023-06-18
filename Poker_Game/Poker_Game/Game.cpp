@@ -3,24 +3,11 @@
 Game::Game(Dealer& _dealer, HumanPlayer& _human, ComputerPlayer& _computer, Player* _startPlayer)
 	: dealer(_dealer), human(_human), computer(_computer)
 {
-	startPlayer = _startPlayer;
 	dealer.startPlayer = _startPlayer;
 	dealer.currentPlayer = _startPlayer;
-	
-	if (startPlayer == &human){
-		dealer.otherPlayer = &computer;
-	}
-	else
-	{
-		dealer.otherPlayer = &human;
-	}
+	dealer.SetOtherPlayer();
 }
 
-void Game::PayStartFee()
-{
-	human.PayUp(startPay,"start");
-	computer.PayUp(startPay,"start");
-}
 
 void Game::Play()
 {
@@ -28,8 +15,8 @@ void Game::Play()
 	{
 		while (!human.lostRound || !computer.lostRound) //dopoki komputer lub czlowiek nie przegra
 		{
-			std::cout << startPlayer->name << " starts" << "\n";
-			PayStartFee();
+			std::cout << dealer.startPlayer->name << " starts" << "\n";
+			dealer.PayStartFee();
 			Auctions();
 			dealer.SetTable();
 			Auctions();
@@ -46,7 +33,7 @@ void Game::Play()
 		//if (human.lostRound)
 
 		dealer.Clean();
-		StartPlayerSwitch();
+		dealer.StartPlayerSwitch();
 	}
 }
 
@@ -71,15 +58,4 @@ bool Game::GameOver()
 	return false;
 }
 
-void Game::StartPlayerSwitch()
-{
-	if (startPlayer == &human)
-	{
-		startPlayer = &computer;
-	}
-	else
-	{
-		startPlayer = &human;
-	}
-}
 

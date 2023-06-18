@@ -12,12 +12,9 @@ public:
 	Dealer & dealer;
 	HumanPlayer& human;
 	ComputerPlayer& computer;
-	Player* startPlayer;
 	
-	void PayStartFee();
 	void Play(); //ma sie dziac tutaj a nie w konstruktorze
 	void Auctions(); 
 	bool GameOver();
-	void StartPlayerSwitch();
 };
 

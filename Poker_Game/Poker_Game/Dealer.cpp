@@ -53,6 +53,32 @@ void Dealer::NextPlayer()
 	otherPlayer = temp;	
 }
 
+void Dealer::StartPlayerSwitch()
+{
+	if (startPlayer == &human)
+	{
+		startPlayer = &computer;
+	}
+	else
+	{
+		startPlayer = &human;
+	}
+	currentPlayer = startPlayer;
+	SetOtherPlayer();
+}
+
+void Dealer::SetOtherPlayer()
+{
+	if (startPlayer == &human)
+	{
+		otherPlayer = &computer;
+	}
+	else
+	{
+		otherPlayer = &human;
+	}
+}
+
 
 void Dealer::SetTable()
 {
@@ -64,12 +90,12 @@ void Dealer::SetTable()
 
 void Dealer::ShowTable()
 {
-	std::cout << "Table contains:" << "\n";
+	std::cout << "\n"<<"Table contains : " << "\n";
 	for (Card card : hand)
 	{
 		card.ShowCard();
 	}
-	std::cout << "\n";
+	//std::cout << "\n";
 }
 
 void Dealer::ShowCreditsInfo()
@@ -91,6 +117,12 @@ int Dealer::HowManyNotEven()
 {
 	int notEven = otherPlayer->creditsOnTable - currentPlayer->creditsOnTable;
 	return notEven;
+}
+
+void Dealer::PayStartFee()
+{
+	currentPlayer->PayUp(startPay, "start");
+	otherPlayer->PayUp(startPay, "start");	
 }
 
 void Dealer::PayToWinner(Player * winner) //nie wiem czy dziala

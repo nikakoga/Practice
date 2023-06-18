@@ -13,6 +13,7 @@ public:
 	Player* currentPlayer;
 	Player* otherPlayer;
 	Player* startPlayer;
+	int startPay = 100;
 	HumanPlayer& human;
 	ComputerPlayer& computer;
 
@@ -26,11 +27,14 @@ public:
 	void OptionRaise();
 
 	int HowManyNotEven();
+	void PayStartFee();
 	void PayToWinner(Player * winner);
 
 	void GiveCard(); 
 
 	void NextPlayer();
+	void StartPlayerSwitch();
+	void SetOtherPlayer();
 
 	void SetWinner();
 
