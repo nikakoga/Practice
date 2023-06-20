@@ -25,11 +25,6 @@ void ComputerPlayer::PayUp(int amount, std::string context)
 	}
 }
 
-void ComputerPlayer::Raise()
-{
-	std::cout << "Computer raise " << "\n";
-}
-
 bool ComputerPlayer::ChooseToMatchOrFold(int amount)
 {
 	//funkcja decyduj¹ca czy dolozyc czy spasowac
@@ -40,8 +35,26 @@ bool ComputerPlayer::ChooseToMatchOrFold(int amount)
 
 bool ComputerPlayer::ChooseRaise()
 {
+	bool raise = true;
 	//ZMIEN POTEM NA RAZIE NA SZTYWNO JEST NA NIE I KONIEC TURY
-	std::cout << name << " dont raise" << "\n";
-	finished = true;
-	return false;
+	if (!raise)
+	{
+		std::cout << name << " dont raise" << "\n";
+		finished = true;
+		return false;
+	}
+
+	if (raise)
+	{
+		Raise();
+		finished = false;
+		return false;
+	}
+}
+
+
+void ComputerPlayer::Raise()
+{
+	int number = 20;
+	PayUp(number, "raise");
 }

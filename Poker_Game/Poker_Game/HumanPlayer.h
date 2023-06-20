@@ -26,6 +26,8 @@ public:
 
     void ShowCreditsInfo() override;
 
+    void Pass();
+
    
     
 };

@@ -24,6 +24,13 @@ bool Player::ChooseToMatchOrFold(int amount)
 	return false;
 }
 
+void Player::Pass()
+{
+	std::cout << name << " folds" << "\n";
+	lostRound = true;
+	finished = true;
+}
+
 bool Player::ChooseRaise()
 {
 	return false;

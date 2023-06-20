@@ -15,7 +15,7 @@ HumanPlayer::HumanPlayer(Deck& deck) : Player(deck)
 
 bool HumanPlayer::ChooseToMatchOrFold(int amount)
 {
-	std::cout << "Do you want to:" << "\n" << "1 - match the current bet" << "\n" << "or" << "\n" << "2 - fold your hand";
+	std::cout << "Do you want to:" << "\n" << "1 - match the current bet" << "\n" << "or" << "\n" << "2 - fold your hand"<<"\n";
 	int respond = SafeChooseBetweenTwo();
 	if (respond == 1)
 	{
@@ -24,10 +24,7 @@ bool HumanPlayer::ChooseToMatchOrFold(int amount)
 	}
 	else
 	{
-		//passowanie
-		std::cout << name << " folds" << "\n";
-		finished = true;
-		lostRound = true;
+		Pass();
 		return false;
 	}
 }
@@ -117,6 +114,7 @@ void HumanPlayer::ShowCreditsInfo()
 {
 	std::cout << "Credits you spend: " << creditsOnTable << "\n";
 }
+
 
 int HumanPlayer::SafeChooseBetweenTwo()
 {
