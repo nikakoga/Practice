@@ -31,12 +31,12 @@ public:
 	void PayToWinner(Player * winner);
 
 	void GiveCard(); 
-
 	void NextPlayer();
 	void StartPlayerSwitch();
 	void SetOtherPlayer();
 
 	void SetWinner();
+	void AnounceWinner(Player* winner);
 
 	void Pass();
 

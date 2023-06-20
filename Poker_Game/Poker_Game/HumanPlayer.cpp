@@ -24,7 +24,7 @@ bool HumanPlayer::ChooseToMatchOrFold(int amount)
 	}
 	else
 	{
-		Pass();
+		//Pass();
 		return false;
 	}
 }

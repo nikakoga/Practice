@@ -26,7 +26,7 @@ public:
     virtual void PayUp(int amount, std::string context);
     virtual void Raise();
 	virtual bool ChooseToMatchOrFold(int amount); 
-    virtual void Pass();
+   // virtual void Pass();
     virtual bool ChooseRaise();
     virtual void ShowCreditsInfo();
 

@@ -41,8 +41,11 @@ void Dealer::OptionRaise()
 
 void Dealer::GiveCard()
 {
-	TakeCard();
-	ShowTable();
+	if (!human.lostRound && !computer.lostRound)
+	{
+		TakeCard();
+		ShowTable();
+	}
 }
 
 
@@ -82,10 +85,14 @@ void Dealer::SetOtherPlayer()
 
 void Dealer::SetTable()
 {
-	TakeCard();
-	TakeCard();
-	TakeCard();
-	ShowTable();
+	if (!human.lostRound && !computer.lostRound)
+	{
+		TakeCard();
+		TakeCard();
+		TakeCard();
+		ShowTable();
+	}
+	
 }
 
 void Dealer::ShowTable()
@@ -112,6 +119,11 @@ void Dealer::SetWinner()
 	
 }
 
+void Dealer::AnounceWinner(Player* winner)
+{
+	std::cout << winner->name << " wins !!!!!!!!!!!" << "\n";
+}
+
 
 int Dealer::HowManyNotEven()
 {
@@ -136,17 +148,22 @@ void Dealer::Pass()
 	//koniec tury
 	human.finished = true;
 	computer.finished = true;
+	
 
 	if (currentPlayer==&computer) //jesli wskaznik ma ten sam adres to wskazuja na to samo
 	{
 		//komp przegral
 		computer.lostRound = true;
+		Player * winner = &human;
+		AnounceWinner(winner);
 	}
 	else if(currentPlayer==&human)
 	{
 		//czlowiek przegral
 		human.lostRound = true;
-	}
+		Player * winner = &computer;
+		AnounceWinner(winner);
+	}	
 }
 
 void Dealer::Clean()

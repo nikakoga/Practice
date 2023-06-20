@@ -13,7 +13,10 @@ void Game::Play()
 {
 	while (!GameOver())
 	{
-		while (!human.lostRound || !computer.lostRound) //dopoki komputer lub czlowiek nie przegra
+		human.lostRound = false;
+		computer.lostRound = false;
+
+		while (!human.lostRound && !computer.lostRound) //dopoki komputer lub czlowiek nie przegra
 		{
 			std::cout << dealer.startPlayer->name << " starts" << "\n";
 			dealer.PayStartFee();
@@ -39,14 +42,24 @@ void Game::Play()
 
 void Game::Auctions()
 {
-	human.finished = false;
-	computer.finished = false;
-	while (!human.finished || !computer.finished)
+	while (!human.lostRound && !computer.lostRound) //jesli ktos zdazyl przegrac to nastepne akcje w funkcji Play nie beda nic robic
 	{
-		dealer.OptionMatchOrFold();
-		dealer.OptionRaise();
-		dealer.NextPlayer();
+		human.finished = false;
+		computer.finished = false;
+
+		while (!human.finished || !computer.finished)
+		{
+			dealer.OptionMatchOrFold();
+			if (human.lostRound || computer.lostRound)
+			{
+				break; // jesli ktos spasuje na tym etapie to nie pytam go potem czy jednak podbija
+			}
+			dealer.OptionRaise();
+			dealer.NextPlayer();
+		}
 	}
+	
+	
 }
 
 bool Game::GameOver()
