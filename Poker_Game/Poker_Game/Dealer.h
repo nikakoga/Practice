@@ -13,6 +13,8 @@ public:
 	Player* currentPlayer;
 	Player* otherPlayer;
 	Player* startPlayer;
+
+	bool matched;
 	int startPay = 100;
 	HumanPlayer& human;
 	ComputerPlayer& computer;

@@ -16,7 +16,7 @@ void ComputerPlayer::PayUp(int amount, std::string context)
 	{
 		credits -= amount;
 		creditsOnTable += amount;
-		std::cout << name << " paid " << amount << " to " << context << "\n"<<"\n";
+		std::cout << name << " paid " << amount << " to " << context << "\n";
 	}
 	else
 	{
@@ -29,27 +29,34 @@ bool ComputerPlayer::ChooseToMatchOrFold(int amount)
 {
 	//funkcja decyduj¹ca czy dolozyc czy spasowac
 	//ZMIEN POTEM NA RAZIE NA SZTYWNO JEST NA TAK I PLACENIE
+	Sleep();
 	PayUp(amount, "match");
 	return true;
 }
 
 bool ComputerPlayer::ChooseRaise()
 {
-	bool raise = true;
 	//ZMIEN POTEM NA RAZIE NA SZTYWNO JEST NA NIE I KONIEC TURY
-	if (!raise)
+	Sleep();
+	if (!nextRaise)
 	{
 		std::cout << name << " dont raise" << "\n";
 		finished = true;
+		nextRaise = true; // !! POTEM DO WYWALENIA
 		return false;
 	}
 
-	if (raise)
+	if (nextRaise)
 	{
-		Raise();
 		finished = false;
-		return false;
+		nextRaise = false; // !! POTEM DO WYWALENIA
+		return true;
 	}
+}
+
+void ComputerPlayer::Sleep()
+{
+	std::this_thread::sleep_for(std::chrono::seconds(2));
 }
 
 

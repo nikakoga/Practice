@@ -1,5 +1,6 @@
 #pragma once
 #include "Player.h"
+#include <thread>
 class ComputerPlayer :
     public Player
 {
@@ -13,6 +14,10 @@ class ComputerPlayer :
         bool ChooseToMatchOrFold(int amount) override;
         //funkcja decydujaca czy podbic (jesli podbicie to wypisanie na ekran)
         bool ChooseRaise() override;
+
+        bool nextRaise=true;
+
+        void Sleep();
 
         
        

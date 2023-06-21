@@ -12,6 +12,8 @@ Dealer::Dealer(Deck& _deck, HumanPlayer& _human, ComputerPlayer& _computer)
 void Dealer::OptionMatchOrFold()
 {
 	ShowCreditsInfo();
+
+	matched = false;
 	//sprawdza czy aktualny gracz wylozyl odpowiednio duzo
 	while (currentPlayer->creditsOnTable < otherPlayer->creditsOnTable)
 	{
@@ -23,6 +25,7 @@ void Dealer::OptionMatchOrFold()
 			//powinna zakonczyc sie tura
 			break;
 		}
+		matched = true; // CD 1 jesli gracz zmatchowal
 	}
 }
 
@@ -32,9 +35,13 @@ void Dealer::OptionRaise()
 	{
 		currentPlayer->Raise();
 	}
-	else
+	else //CD 2 ale nie podbil
 	{
-		startPlayer->finished = true;
+		if (matched)
+		{
+			currentPlayer->finished = true;
+			otherPlayer->finished = true; //to oznacza Check i konczy ture
+		}
 	}
 }
 
