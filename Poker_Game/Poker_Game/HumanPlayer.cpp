@@ -96,28 +96,33 @@ void HumanPlayer::TakeCard()
 
 bool HumanPlayer::PayUp(int amount, std::string context)
 {
-	if (credits == 0)
-	{
-		std::cout << "You are a bankroupt" << "\n"; //?????????TO CHY
-		bankrupt = true;
-		return false; //nie moze zaplacic bo bankrut, ale do konca tury gra sie ma toczyc bo wszedl "all in"
-	}
-	else if (credits >= amount)
+	
+	if (credits >= amount)
 	{
 		credits -= amount;
 		creditsOnTable += amount;
 		std::cout << name<<" paid " << amount << " to " << context << "\n";
 		ShowCreditsInfo();
+		CheckBankrupt(); //sprawdzam czy przy tym nie zbankrutowal
 		return true; //zaplacil
 	}
 	else
 	{
 		std::cout << "This is more than " << credits << " you have" << "\n";
 
-		if (context == "match" || context =="start")
+		if (context == "match")
 		{
+			std::cout << "You go all in with your " << credits << "\n";
+			creditsOnTable += credits;
+			credits = 0;
 			bankrupt = true;
-			//przegrana bo nie moze zaplacic za start
+			return true; //zaplacil tyle ile ma wiec dal all in i gra dalej
+		}
+		else if (context == "start")
+		{
+			bankrupt = true; //zbedne upewnienie !!!!!!!! ale zostawie do czasu przejscia debugu
+			lostRound = true; //przegrana gdy nie moze zaplacic za start
+			
 		}
 		else if (context == "raise")
 		{
@@ -134,6 +139,19 @@ void HumanPlayer::ShowHand()
 	for (Card card : hand)
 	{
 		card.ShowCard();
+	}
+}
+
+void HumanPlayer::CheckBankrupt()
+{
+	if (credits == 0)
+	{
+		bankrupt = true;
+		std::cout << "You are a bankrupt" << "\n";
+	}
+	else if (credits > 0)
+	{
+		std::cout << "BLAAAAAAD UJEMNA WARTOSC CREDITS U HUMAN" << "\n";
 	}
 }
 
