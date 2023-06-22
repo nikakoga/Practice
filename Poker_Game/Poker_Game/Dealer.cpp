@@ -31,11 +31,17 @@ void Dealer::OptionMatchOrFold()
 
 void Dealer::OptionRaise()
 {
+	int raised;
 	if (currentPlayer->ChooseRaise())
 	{
-		currentPlayer->Raise();
+		raised = currentPlayer->Raise();
+		if (raised == 0) //CD 2 podbil o 0 
+		{
+			currentPlayer->finished = true;
+			otherPlayer->finished = true; //to oznacza Check i konczy ture
+		}
 	}
-	else //CD 2 ale nie podbil
+	else //CD 2 lub po prostu nie podbil
 	{
 		if (matched)
 		{

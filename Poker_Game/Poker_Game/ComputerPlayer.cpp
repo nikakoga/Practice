@@ -10,22 +10,25 @@ ComputerPlayer::ComputerPlayer(Deck& deck) : Player(deck)
 	bankrupt = false;
 }
 
-void ComputerPlayer::PayUp(int amount, std::string context)
+bool ComputerPlayer::PayUp(int amount, std::string context)
 {
 	if (credits == 0)
 	{
 		bankrupt = true;
+		return false;
 	}
 	else if (credits >= amount)
 	{
 		credits -= amount;
 		creditsOnTable += amount;
 		std::cout << name << " paid " << amount << " to " << context << "\n";
+		return true;
 	}
 	else
 	{
-		//przegrana
-		lostRound = true;
+		//komputer nie podbije wiecej niz moze wiec jesli nie moze zaplacic to albo aby wystartowac albo aby dorownac
+		bankrupt = true;
+		return false; //CHYBA??
 	}
 }
 
@@ -64,8 +67,9 @@ void ComputerPlayer::Sleep()
 }
 
 
-void ComputerPlayer::Raise()
+int ComputerPlayer::Raise()
 {
 	int number = 20;
 	PayUp(number, "raise");
+	return number;
 }

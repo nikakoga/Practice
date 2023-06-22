@@ -44,7 +44,7 @@ bool HumanPlayer::ChooseRaise()
 	}
 }
 
-void HumanPlayer::Raise()
+int HumanPlayer::Raise()
 {
 	bool validInput = false;
 	while (!validInput)
@@ -56,12 +56,29 @@ void HumanPlayer::Raise()
 		if (IsInteger(input))
 		{
 			int number = std::stoi(input);
-			if (number > 0)
+			if (number == 0) //czyli nie podbija
 			{
-				PayUp(number, "raise");
-				finished = false; //ustawiam flage ze ten gracz przedluza czas trwania tury
+				finished = true; //gracz zakonczyl runde
+				return 0;
 			}
-			validInput = true;
+			else if (number > 0) // jesli podbicie bylo wieksze niz 0 
+			{
+				if (PayUp(number, "raise")) //jesli bylo stac na podbicie
+				{
+					finished = false; //ustawiam flage ze ten gracz przedluza czas trwania tury
+					validInput = true;
+					return number; //zwracam o ile podbito
+				}
+				else //jesli nie bylo stac na podbicie
+				{
+					validInput = false; //petla wystartuje ponownie, moze poprawic kwote lub dac 0 
+				}
+			}	
+			else if (number < 0) //gdy ktos poda ujemna
+			{
+				validInput = false;
+				std::cout << "You cant raise by negative number. Try again" << "\n";
+			}
 		}
 		else {
 			std::cout << "Invalid input. Please try again or enter 0 if you dont want to raise." << "\n";
@@ -75,18 +92,20 @@ void HumanPlayer::TakeCard()
 	ShowHand();
 }
 
-void HumanPlayer::PayUp(int amount, std::string context)
+bool HumanPlayer::PayUp(int amount, std::string context)
 {
 	if (credits == 0)
 	{
 		bankrupt = true;
+		return false; //nie moze zaplacic bo bankrut, ale do konca tury gra sie ma toczyc bo wszedl "all in"
 	}
 	else if (credits >= amount)
 	{
 		credits -= amount;
 		creditsOnTable += amount;
 		std::cout << name<<" paid " << amount << " to " << context << "\n";
-		std::cout << name<<" credits left: " << credits << "\n" << "\n";
+		ShowCreditsInfo();
+		return true; //zaplacil
 	}
 	else
 	{
@@ -94,13 +113,13 @@ void HumanPlayer::PayUp(int amount, std::string context)
 
 		if (context == "match" || context =="start")
 		{
-			//przegrana
 			bankrupt = true;
+			return false; //przegrana bo nie moze zaplacic za start
 		}
 		else if (context == "raise")
 		{
 			 std::cout<< "Please try again or enter 0 if you dont want to raise" << "\n";
-			 Raise();
+			 return false; // nie udana podwyzka, wymaga poprawy
 		}
 	}
 }
@@ -117,6 +136,7 @@ void HumanPlayer::ShowHand()
 void HumanPlayer::ShowCreditsInfo()
 {
 	std::cout << "Credits you spend: " << creditsOnTable << "\n";
+	std::cout << "Credits you have: " << credits << "\n";
 }
 
 
