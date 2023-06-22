@@ -103,7 +103,12 @@ bool HumanPlayer::PayUp(int amount, std::string context)
 		creditsOnTable += amount;
 		std::cout << name<<" paid " << amount << " to " << context << "\n";
 		ShowCreditsInfo();
-		CheckBankrupt(); //sprawdzam czy przy tym nie zbankrutowal
+
+		if (credits == 0)//sprawdzam czy przy tym nie zbankrutowal
+		{
+			bankrupt = true;
+		}
+		 
 		return true; //zaplacil
 	}
 	else
@@ -139,19 +144,6 @@ void HumanPlayer::ShowHand()
 	for (Card card : hand)
 	{
 		card.ShowCard();
-	}
-}
-
-void HumanPlayer::CheckBankrupt()
-{
-	if (credits == 0)
-	{
-		bankrupt = true;
-		std::cout << "You are a bankrupt" << "\n";
-	}
-	else if (credits < 0)
-	{
-		std::cout << "BLAAAAAAD UJEMNA WARTOSC CREDITS U HUMAN" << "\n";
 	}
 }
 
