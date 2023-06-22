@@ -8,8 +8,8 @@ class ComputerPlayer :
     public:
         ComputerPlayer(Deck& deck);
 
-        void PayUp(int amount, std::string context) override;
-        void Raise() override;
+        bool PayUp(int amount, std::string context) override;
+        int Raise() override;
 
         bool ChooseToMatchOrFold(int amount) override;
         //funkcja decydujaca czy podbic (jesli podbicie to wypisanie na ekran)

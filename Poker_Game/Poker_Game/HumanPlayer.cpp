@@ -31,7 +31,8 @@ bool HumanPlayer::ChooseToMatchOrFold(int amount)
 
 bool HumanPlayer::ChooseRaise()
 {
-	std::cout << "Do you want to Raise? :" << "\n" << "1 - No" <<"\n" << "2 - Yes" << "\n";
+
+	std::cout << "Do you want to Raise? :" << "\n" << "1 - No" << "\n" << "2 - Yes" << "\n";
 	int respond = SafeChooseBetweenTwo();
 	if (respond == 1)
 	{
@@ -39,7 +40,7 @@ bool HumanPlayer::ChooseRaise()
 		return false;
 	}
 	else
-	{	
+	{
 		return true;
 	}
 }
@@ -73,14 +74,15 @@ int HumanPlayer::Raise()
 				{
 					validInput = false; //petla wystartuje ponownie, moze poprawic kwote lub dac 0 
 				}
-			}	
+			}
 			else if (number < 0) //gdy ktos poda ujemna
 			{
 				validInput = false;
 				std::cout << "You cant raise by negative number. Try again" << "\n";
 			}
 		}
-		else {
+		else 
+		{
 			std::cout << "Invalid input. Please try again or enter 0 if you dont want to raise." << "\n";
 		}
 	}
@@ -96,6 +98,7 @@ bool HumanPlayer::PayUp(int amount, std::string context)
 {
 	if (credits == 0)
 	{
+		std::cout << "You are a bankroupt" << "\n"; //?????????TO CHY
 		bankrupt = true;
 		return false; //nie moze zaplacic bo bankrut, ale do konca tury gra sie ma toczyc bo wszedl "all in"
 	}
@@ -114,13 +117,14 @@ bool HumanPlayer::PayUp(int amount, std::string context)
 		if (context == "match" || context =="start")
 		{
 			bankrupt = true;
-			return false; //przegrana bo nie moze zaplacic za start
+			//przegrana bo nie moze zaplacic za start
 		}
 		else if (context == "raise")
 		{
 			 std::cout<< "Please try again or enter 0 if you dont want to raise" << "\n";
-			 return false; // nie udana podwyzka, wymaga poprawy
+			 // nie udana podwyzka, wymaga poprawy
 		}
+		return false;
 	}
 }
 

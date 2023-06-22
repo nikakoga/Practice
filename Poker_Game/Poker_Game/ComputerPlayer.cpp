@@ -53,7 +53,7 @@ bool ComputerPlayer::ChooseRaise()
 		return false;
 	}
 
-	if (nextRaise)
+	else
 	{
 		finished = false;
 		nextRaise = false; // !! POTEM DO WYWALENIA

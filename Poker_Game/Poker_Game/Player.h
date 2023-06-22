@@ -23,8 +23,8 @@ public:
 
 	//Take card.
 	virtual void TakeCard();
-    virtual void PayUp(int amount, std::string context);
-    virtual void Raise();
+    virtual bool PayUp(int amount, std::string context);
+    virtual int Raise();
 	virtual bool ChooseToMatchOrFold(int amount); 
    // virtual void Pass();
     virtual bool ChooseRaise();

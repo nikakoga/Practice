@@ -10,12 +10,14 @@ void Player::TakeCard()
 	hand.push_back(deck.GetCard());
 }
 
-void Player::PayUp(int amount, std::string context)
+bool Player::PayUp(int amount, std::string context)
 {
+	return false;
 }
 
-void Player::Raise()
+int Player::Raise()
 {
+	return 0;
 }
 
 

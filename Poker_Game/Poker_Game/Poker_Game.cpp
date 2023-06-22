@@ -15,8 +15,8 @@ int main()
     HumanPlayer human(deck);
     ComputerPlayer computer(deck);
     Dealer dealer(deck, human, computer);
-    Player* current = &human;
-    Game game(dealer, human, computer,current);
+    Player* start = &computer; //KTO ZACZYNA
+    Game game(dealer, human, computer,start);
     game.Play();
     
     

@@ -16,11 +16,11 @@ public:
 
     bool ChooseRaise() override;
 
-    void Raise() override;
+    int Raise() override;
     
     void TakeCard() override;
 
-    void PayUp(int amount, std::string context);
+    bool PayUp(int amount, std::string context) override;
 
     void ShowHand();
 

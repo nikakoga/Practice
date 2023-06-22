@@ -31,22 +31,25 @@ void Dealer::OptionMatchOrFold()
 
 void Dealer::OptionRaise()
 {
-	int raised;
-	if (currentPlayer->ChooseRaise())
+	if (!currentPlayer->bankrupt)
 	{
-		raised = currentPlayer->Raise();
-		if (raised == 0) //CD 2 podbil o 0 
+		int raised;
+		if (currentPlayer->ChooseRaise())
 		{
-			currentPlayer->finished = true;
-			otherPlayer->finished = true; //to oznacza Check i konczy ture
+			raised = currentPlayer->Raise();
+			if (raised == 0) //CD 2 podbil o 0 
+			{
+				currentPlayer->finished = true;
+				otherPlayer->finished = true; //to oznacza Check i konczy ture
+			}
 		}
-	}
-	else //CD 2 lub po prostu nie podbil
-	{
-		if (matched)
+		else //CD 2 lub po prostu nie podbil
 		{
-			currentPlayer->finished = true;
-			otherPlayer->finished = true; //to oznacza Check i konczy ture
+			if (matched)
+			{
+				currentPlayer->finished = true;
+				otherPlayer->finished = true; //to oznacza Check i konczy ture
+			}
 		}
 	}
 }
