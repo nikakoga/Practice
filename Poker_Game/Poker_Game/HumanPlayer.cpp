@@ -77,7 +77,11 @@ void HumanPlayer::TakeCard()
 
 void HumanPlayer::PayUp(int amount, std::string context)
 {
-	if (credits >= amount)
+	if (credits == 0)
+	{
+		bankrupt = true;
+	}
+	else if (credits >= amount)
 	{
 		credits -= amount;
 		creditsOnTable += amount;
