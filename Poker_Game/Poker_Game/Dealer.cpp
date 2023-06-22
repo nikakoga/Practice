@@ -11,27 +11,31 @@ Dealer::Dealer(Deck& _deck, HumanPlayer& _human, ComputerPlayer& _computer)
 
 void Dealer::OptionMatchOrFold()
 {
-	ShowCreditsInfo();
-
-	matched = false;
-	//sprawdza czy aktualny gracz wylozyl odpowiednio duzo
-	while (currentPlayer->creditsOnTable < otherPlayer->creditsOnTable)
+	if (!currentPlayer->bankrupt && !otherPlayer->bankrupt) //jesli ktos zbankrutowal nastepuje check wszystkich kart, nikt nie podbija itp
 	{
-		int toPay = HowManyNotEven();
-		//jesli nie to wybiera czy doplacic
-		if (!currentPlayer->ChooseToMatchOrFold(toPay)) // jesli nie chce doplacic
+		ShowCreditsInfo();
+
+		matched = false;
+		//sprawdza czy aktualny gracz wylozyl odpowiednio duzo
+		while (currentPlayer->creditsOnTable < otherPlayer->creditsOnTable)
 		{
-			Pass();
-			//powinna zakonczyc sie tura
-			break;
+			int toPay = HowManyNotEven();
+			//jesli nie to wybiera czy doplacic
+			if (!currentPlayer->ChooseToMatchOrFold(toPay)) // jesli nie chce doplacic
+			{
+				Pass();
+				//powinna zakonczyc sie tura
+				break;
+			}
+			matched = true; // CD 1 jesli gracz zmatchowal
 		}
-		matched = true; // CD 1 jesli gracz zmatchowal
 	}
+	
 }
 
 void Dealer::OptionRaise()
 {
-	if (!currentPlayer->bankrupt)
+	if (!currentPlayer->bankrupt && !otherPlayer->bankrupt) //jak ktos zbankrutuje to nikt juz nie podbija
 	{
 		int raised;
 		if (currentPlayer->ChooseRaise())
