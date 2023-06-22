@@ -30,6 +30,11 @@ void Dealer::OptionMatchOrFold()
 			matched = true; // CD 1 jesli gracz zmatchowal
 		}
 	}
+	else
+	{
+		currentPlayer->finished = true;
+		otherPlayer->finished = true;
+	}
 	
 }
 
