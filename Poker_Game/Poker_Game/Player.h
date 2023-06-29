@@ -18,7 +18,7 @@ public:
 	std::string name;
 	std::vector<Card> hand;
     
-	//std::unordered_set<Card> bestCombination; //NAPRAW BO WYKRZACZA
+	std::vector<Card> bestCombination; //NAPRAW BO WYKRZACZA // albo dopisz operator porownania dla Card albo przerob na inty
 	Deck& deck;
 
 	virtual void TakeCard();

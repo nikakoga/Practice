@@ -13,12 +13,12 @@ public:
     std::string GetColour();
     std::string GetValue();
     //zrobic get value as int uzywajac do tego enuma
+    //bool operator==(Card& other);
 
 private:
     std::string colour;
     std::string value;
 
-    //moze przeciazyc operator < zeby porownywac wartosci kart 
-    //moze + zeby latwiej tworzyc zestawy kart?
+
 };
 

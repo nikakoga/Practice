@@ -23,4 +23,15 @@ std::string Card::GetValue()
     return value;
 }
 
-//CardValue c = A;
+
+//bool Card::operator==(Card& other)
+//{
+//    if (other.colour == colour && other.value == value)
+//    {
+//        return true;
+//    }
+//    else
+//    {
+//        return false;
+//    }
+//}
