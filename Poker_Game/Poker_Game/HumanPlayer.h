@@ -24,8 +24,6 @@ public:
 
     void ShowHand();
 
-    void CheckBankrupt();
-
     void ShowCreditsInfo() override;
 
     

@@ -21,12 +21,10 @@ public:
 	//std::unordered_set<Card> bestCombination; //NAPRAW BO WYKRZACZA
 	Deck& deck;
 
-	//Take card.
 	virtual void TakeCard();
     virtual bool PayUp(int amount, std::string context);
     virtual int Raise();
 	virtual bool ChooseToMatchOrFold(int amount); 
-   // virtual void Pass();
     virtual bool ChooseRaise();
     virtual void ShowCreditsInfo();
 

@@ -36,7 +36,6 @@ void Game::Play()
 			std::cout << "- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - " << "\n" << "\n";
 			break; //dzieki temu wykona sie tylko raz na runde
 		}
-		//if (human.lostRound)
 
 		dealer.Clean();
 		dealer.StartPlayerSwitch();
